@@ -1,0 +1,18 @@
+global-styling:
+ css:
+  theme:
+   'http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,100%7CRoboto:400,700,300,100': { type: external }
+   css/font-awesome.css: {}
+   css/bootstrap.min.css: {}   
+   css/custom.css: {}
+ js:
+  js/bootstrap.min.js: {}
+  js/custom.js: {}
+ dependencies:
+  - core/jquery
+  - core/drupal.ajax
+  - core/drupal
+  - core/drupalSettings
+  - core/jquery.once
+
+

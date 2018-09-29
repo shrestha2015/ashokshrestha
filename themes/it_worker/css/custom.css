@@ -1,0 +1,126 @@
+/*
+
+=====================
+BODY, HTML
+=====================
+
+*/
+body {
+  font-weight: 400;
+}
+html,
+body,
+#all {
+  height: 100%;
+  min-height: 100%;
+}
+/*
+
+=====================
+NAVBAR
+=====================
+
+*/
+.navbar {
+  border: none;
+}
+.navbar ul.nav > li > a {
+  text-transform: uppercase;
+  border-top: solid 5px transparent;
+}
+.navbar ul.nav > li > a:hover {
+  border-top: solid 5px #4fbfa8;
+}
+@media (max-width: 767px) {
+  .navbar ul.nav > li > a:hover {
+    border-top: solid 5px transparent;
+  }
+}
+.navbar ul.nav > li.active > a,
+.navbar ul.nav > li.open > a {
+  text-decoration: none !important;
+  border-top: solid 5px #4fbfa8;
+  font-weight: bold;
+}
+@media (max-width: 767px) {
+  .navbar ul.nav > li.active > a,
+  .navbar ul.nav > li.open > a {
+    border-top: solid 5px transparent;
+  }
+}
+/*
+
+
+/*
+=====================
+INTRO
+=====================
+
+*/
+#intro {
+  position: relative;
+  height: 100%;
+}
+#intro .frontpage-banner {
+  height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-backface-visibility: hidden;
+}
+#intro .frontpage-banner .logo {
+  margin-bottom: 120px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-backface-visibility: hidden;
+}
+@media (max-width: 767px) {
+  #intro .introduction-content .logo {
+    margin-bottom: 50px;
+  }
+}
+#intro .introduction-content h1 {
+  font-size: 60px;
+  color: #fff;
+  margin-bottom: 40px;
+  font-weight: 700;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-backface-visibility: hidden;
+}
+@media (max-width: 991px) {
+  #intro .introduction-content h1 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 767px) {
+  #intro .introduction-content h1 {
+    font-size: 35px;
+  }
+}
+#intro .introduction-content h2 {
+  color: #fff;
+  margin-bottom: 120px;
+  font-weight: 400;
+  opacity: 1;
+  filter: alpha(opacity=0);
+  -webkit-backface-visibility: hidden;
+}
+@media (max-width: 767px) {
+  #intro .introduction-content h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    padding: 0 30px;
+  }
+}
+@media (max-width: 1199px) {
+  #intro .introduction-content h2 {
+    font-size: 25px;
+    margin-bottom: 40px;
+  }
+}
+#intro .introduction-content .carousel-caption {
+  left: 0;
+  right: 0;
+}

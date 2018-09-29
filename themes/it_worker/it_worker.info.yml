@@ -1,0 +1,25 @@
+name: 'It worker'
+type: theme
+base theme: classy
+description: 'A It worker theme.'
+core: 8.x
+libraries:
+- it_worker/global-styling
+stylesheets-remove:
+- core/assets/vendor/normalize-css/normalize.css
+regions:
+  navigation: 'Navigation'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  introduction: 'Intoduction'
+  about_me: 'About Me'
+  services: 'Services'
+  testimonials: 'Testimonials'
+  showcase: 'Showcase'
+  mywork: 'My Work'
+  clients: 'Clients List'
+  contact: 'Contact'
+  map: 'Map'
+  footer: 'Footer'  
+
+
