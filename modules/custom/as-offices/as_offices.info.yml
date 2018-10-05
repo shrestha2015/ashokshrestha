@@ -1,0 +1,5 @@
+name: Ashok offices
+type: module
+description: Provides functionality related to offices/contact pages.
+core: 8.x
+package: Ashok

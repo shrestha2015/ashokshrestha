@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Default theme implementation for an Address Map display suite field.
+ *
+ * To override output, copy the "address-map.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Available variables:
+ * - address: The formatted street address for Google Maps API.
+ * - width: The width for the #map div.
+ * - height: The height for the #map div.
+ * - styles: JSON used to theme maps (https://snazzymaps.com).
+ * - zoom: The zoom level integer.
+ * - disable_default_ui: Disables the Google Maps default UI and controls.
+ * - disable_double_click_zoom: Disables map zoom on double click.
+ * - scroll_wheel: Whether the map should zoom on mouse scroll.
+ * - draggable: Whether the map should be draggable by the mouse.
+ * - icon: The URL of the icon image.
+ *
+ * @see template_preprocess_field()
+ *
+ * @ingroup themeable
+ */
+#}
+<div id="map" style="width: {{ width }}; height: {{ height }};" aria-hidden="true" tabindex="-1"></div>
+<script>
+  var map;
+  function initMap() {
+    var address = '{{ address }}';
+    var geocoder = new google.maps.Geocoder();
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: {{ zoom }},
+      disableDefaultUI: {{ disable_default_ui }},
+      scrollwheel: {{ scroll_wheel }},
+      draggable: {{ draggable }},
+      disableDoubleClickZoom: {{ disable_double_click_zoom }},
+      {% if styles %}
+      styles: {{ styles | raw }},
+      {% endif %}
+    });
+    geocoder.geocode({'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location,
+          {% if icon %}
+          icon: '{{ icon }}',
+          {% endif %}
+        });
+      }
+    });
+  }
+</script>

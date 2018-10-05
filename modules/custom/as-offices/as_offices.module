@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Provides functionality related to offices/contact pages.
+ */
+
+/**
+ * Implements hook_theme().
+ *
+ * @return array
+ */
+function as_offices_theme() {
+  // Register theme components.
+  return [
+    'address_map' => [
+      'variables' => [
+        'address' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+        'styles' => NULL,
+        'zoom' => NULL,
+        'disable_default_ui' => NULL,
+        'scroll_wheel' => NULL,
+        'draggable' => NULL,
+        'icon' => NULL,
+        'disable_double_click_zoom' => NULL,
+      ]
+    ]
+  ];
+}
