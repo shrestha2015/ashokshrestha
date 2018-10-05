@@ -30,7 +30,7 @@ class AddressMap extends DsFieldBase {
     $config = $this->getConfiguration();
     $renderer = \Drupal::service('renderer');
     // Get the field from the entity.
-    $field = $node->get('field_office');
+    $field = $node->get('field_address');
     // Render the field.
     if ($field) {
       // Set render options.
