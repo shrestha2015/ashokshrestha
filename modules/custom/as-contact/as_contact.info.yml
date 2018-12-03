@@ -1,0 +1,5 @@
+name: Ashok Contact
+type: module
+description: Provides functionality relating to contactme webform.
+core: 8.x
+package: Ashok

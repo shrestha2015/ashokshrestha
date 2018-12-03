@@ -1,0 +1,5 @@
+name: Ashok Base
+type: module
+description: Ashok base functionality.
+core: 8.x
+package: Ashok

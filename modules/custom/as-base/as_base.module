@@ -1,0 +1,31 @@
+  <?php
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Link;
+
+
+/**
+ * Implements hook_base_form_alter().
+ *
+ * - Add 'dates' to 'created' exposed filter on 'views.case-notes.page'.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function as_base_form_alter(&$form, $form_state, $form_id) {
+
+  //var_dump($form_id);
+  switch ($form_id) {
+      // This is our form ID.
+      case 'webform_submission_contact_add_form' :
+        //kint($form);
+            $form['elements']['first_name']['#attributes']['class'][] = 'form-control';
+            $form['elements']['last_name']['#attributes']['class'][] = 'form-control';
+            $form['elements']['email']['#attributes']['class'][] = 'form-control';
+            $form['elements']['phone']['#attributes']['class'][] = 'form-control';
+            $form['elements']['message']['#attributes']['class'][] = 'form-control';
+            $form['actions']['submit']['#attributes']['class'][] = 'btn btn-primary btn-lg';
+        break;
+    }
+}

@@ -36,7 +36,7 @@ class SocialPlatformsBlock extends BlockBase {
     'google-plus' => 'Google Plus+',
     'tumblr' => 'Tumblr',
     'instagram' => 'Instagram'
-  );
+    );
 
   /**
    * Build default block config.
@@ -47,9 +47,9 @@ class SocialPlatformsBlock extends BlockBase {
     $config = [];
     foreach ($this->platforms as $platform_id => $platform_label) {
       $config['platforms'][$platform_id] = [
-        'url' => '',
-        'weight' => 0,
-        'label' => $platform_label
+      'url' => '',
+      'weight' => 0,
+      'label' => $platform_label
       ];
     }
     return $config;
@@ -64,28 +64,50 @@ class SocialPlatformsBlock extends BlockBase {
     $build = [];
     $config = $this->getConfiguration();
     // Create item list.
-    $build['as_social_platforms_block'] = [
-      '#theme' => 'item_list',
-      '#attributes' => [
-        'class' => 'as-social-platforms-block'
-      ]
+    $build['ashok_social_platforms_block'] = [
+    '#theme' => 'item_list',
+    '#attributes' => [
+    'class' => 'dg-social-platforms-block'
+    ]
     ];
+
+    uasort($config['platforms'], ['Drupal\Component\Utility\SortArray', 'sortByWeightElement']);
     // Create item list items.
     foreach ($config['platforms'] as $platform_id => $platform) {
+
       if ($platform['url']) {
-        $build['as_social_platforms_block']['#items'][$platform_id] = [
-          '#title' => t('Follow on ') . $platform['label'],
-          '#type' => 'link',
-          '#url' => Url::fromUri($platform['url']),
-          '#attributes' => [
-            'rel' => 'nofollow'
-          ],
-          '#wrapper_attributes' => [
-            'class' => [
-              'as-social-platforms-block__item',
-              'as-social-platforms-block__item--' . $platform_id
-            ]
-          ]
+        $title = t('Follow us on ') . $platform['label'];
+        $class = 'external';
+        switch ($platform_id) {
+          case 'facebook':
+          $title=t('<i class="fa fa-facebook"></i>');
+          $class = 'external facebook';
+          break;
+
+          case 'instagram':
+          $title=t('<i class="fa fa-instagram"></i>');
+          $class = 'external instagram';
+          break;
+
+          case 'google-plus':
+          $title=t('<i class="fa fa-google-plus"></i>');
+          $class = 'external gplus';
+          break;
+
+          default:
+          $title = t('Follow us on ') . $platform['label'];
+          break;
+        }
+        $build['ashok_social_platforms_block']['#items'][$platform_id] = [
+        '#title' => $title,
+        '#type' => 'link',
+        '#url' => Url::fromUri($platform['url']),
+        '#attributes' => [
+        'target' => '_blank',
+        'class' => $class,
+        'data-animate' => 'fadeInUp',
+        'data-animate-hover' => 'shake'
+        ]
         ];
       }
     }
@@ -104,47 +126,48 @@ class SocialPlatformsBlock extends BlockBase {
     $config = $this->getConfiguration();
     // Build social platforms table.
     $form['platforms'] = [
-      '#type' => 'table',
-      '#header' => [t('Name'), t('URL'), t('Weight')],
-      '#tabledrag' => [
-        [
-          'action' => 'order',
-          'relationship' => 'sibling',
-          'group' => 'social-platforms-block-order-weight',
-        ],
-      ],
+    '#type' => 'table',
+    '#header' => [t('Name'), t('URL'), t('Weight')],
+    '#tabledrag' => [
+    [
+    'action' => 'order',
+    'relationship' => 'sibling',
+    'group' => 'social-platforms-block-order-weight',
+    ],
+    ],
     ];
     // Create platform table row.
     foreach ($config['platforms'] as $platform_id => $platform) {
       $form['platforms'][$platform_id] = [
-        '#weight' => $platform['weight'],
-        '#attributes' => [
-          'class' => ['draggable']
-        ]
+      '#weight' => $platform['weight'],
+      '#attributes' => [
+      'class' => ['draggable']
+      ]
       ];
       $form['platforms'][$platform_id]['label'] = [
-        '#markup' => $platform['label']
+      '#markup' => $platform['label']
       ];
       $form['platforms'][$platform_id]['url'] = [
-        '#type' => 'textfield',
-        '#default_value' => $platform['url'],
-        '#element_validate' => [
+      '#type' => 'textfield',
+      '#default_value' => $platform['url'],
+      '#element_validate' => [
           // Workaround for:
           // https://www.drupal.org/node/2649746
-          [$this, 'url_validate']
-        ]
+      [$this, 'url_validate']
+      ]
       ];
       // Used for tabledrag weight.
       $form['platforms'][$platform_id]['weight'] = [
-        '#type' => 'weight',
-        '#title' => t('Weight for @title', ['@title' => $platform['label']]),
-        '#title_display' => 'invisible',
-        '#default_value' => $platform['weight'],
-        '#attributes' => [
-          'class' => ['social-platforms-block-order-weight']
-        ],
+      '#type' => 'weight',
+      '#title' => t('Weight for @title', ['@title' => $platform['label']]),
+      '#title_display' => 'invisible',
+      '#default_value' => $platform['weight'],
+      '#attributes' => [
+      'class' => ['social-platforms-block-order-weight']
+      ],
       ];
     }
+    //kint($form['platforms']);
     // Sort the table by weight.
     uasort($form['platforms'], ['Drupal\Component\Utility\SortArray', 'sortByWeightProperty']);
     return $form;
@@ -163,7 +186,7 @@ class SocialPlatformsBlock extends BlockBase {
       $form_state->setError(
         $element,
         t('@label: URL needs to be absolute, eg: http://example.com.', ['@label' => $element['#attributes']['data-label'][0]])
-      );
+        );
     }
   }
 

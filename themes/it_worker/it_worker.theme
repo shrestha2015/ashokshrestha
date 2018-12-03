@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * Implements hook_theme_registry_alter().
+ *
+ * - Add preprocessing functions for display suite layouts.
+ *
+ * @param $theme_registry
+ */
+// function it_worker_theme_registry_alter(&$theme_registry) {
+//   // Add preprocessing functions for display suite layouts.
+//   if (\Drupal::moduleHandler()->load('ds')) {
+//     $layouts = \Drupal\ds\Ds::getLayouts();
+//     $layout_theme_hooks = [];
+//     foreach ($layouts as $info) {
+//       if ($info['class'] == '\Drupal\ds\Plugin\DsLayout') {
+//         $layout_theme_hooks[] = $info['theme'];
+//       }
+//     }
+//     foreach ($theme_registry as $theme_hook => $info) {
+//       if (in_array($theme_hook, $layout_theme_hooks) || (!empty($info['base hook']) && in_array($info['base hook'], $layout_theme_hooks))) {
+//         $theme_registry[$theme_hook]['preprocess functions'][] = 'it_worker_preprocess_ds_layout';
+//       }
+//     }
+//   }
+// }
+
+/**
+ * Preprocess display suite layouts.
+ *
+ * - Set background for 'callout' field collection item.
+ *
+ * @param $variables
+ */
+// function it_worker_preprocess_ds_layout(&$variables) {
+//   $content = $variables['content'];kint('Ashok');
+//   kint($content['#entity_type']);
+//   // Set background for 'callout' field collection item.
+//   if ('field_collection_item' == $content['#entity_type'] && 'field_callout' == $content['#bundle']) {
+//     $entity = $variables['field_collection_item'];
+//     $file = $entity->get('field_image')->getValue();
+//     if ($file) {
+//       $file = $file[0];
+//       $file = \Drupal\file\Entity\File::load($file['target_id']);
+//       $url = $file->url();
+//       $variables['attributes']['style'][] = sprintf('background-image: url(%s)', $url);
+//       $variables['has_image'] = TRUE;
+//     }
+//   }
+//}
+
+
+function it_worker_preprocess_page(&$variables) {
+	global $base_url;
+	//Getting sitename to use it in all the places
+	$variables['site_name'] = \Drupal::config('system.site')->get('name');
+	$variables['base_url'] = $base_url;
+}
+
+function it_worker_preprocess_field(&$vars, $hook)
+{
+    $element = $vars['element'];
+
+    /*Preprocessing rating data of Home page aboutme*/
+    if ($vars['element']['#field_name'] == 'field_framework_rating') {
+        //kint($vars['items']);
+        $i = 0;
+        foreach ($vars['items'] as $index => $entity) {
+            $framework = $vars['items'][$index]['content']['#field_collection_item']->get('field_framework')->value;
+            $rating = $vars['items'][$index]['content']['#field_collection_item']->get('field_rating')->value;
+            $framework_ratings[$i]['framework'] = $framework;
+            $framework_ratings[$i]['rating'] = $rating;
+            $vars['framework_ratings'] = $framework_ratings;
+            $i++;
+        }
+    }
+}

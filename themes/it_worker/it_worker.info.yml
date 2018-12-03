@@ -7,19 +7,24 @@ libraries:
 - it_worker/global-styling
 stylesheets-remove:
 - core/assets/vendor/normalize-css/normalize.css
+- core/themes/classy/css/components/form.css
 regions:
+  sitelogo: 'Site logo'
   navigation: 'Navigation'
+  banner: 'Banner'
   breadcrumb: 'Breadcrumb'
   content: 'Content'
-  introduction: 'Intoduction'
+  introduction: 'Introduction'
   about_me: 'About Me'
-  services: 'Services'
+  blog: 'Blogs'
   testimonials: 'Testimonials'
   showcase: 'Showcase'
   mywork: 'My Work'
   clients: 'Clients List'
   contact: 'Contact'
   map: 'Map'
-  footer: 'Footer'  
+  social_share: 'Social Share'
+  copy_right: 'Copy Right'
+  disabled: 'Disabled'
 
 

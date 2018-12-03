@@ -23,9 +23,9 @@
  *
  * @ingroup themeable
  */
-#}
-<div id="map" style="width: {{ width }}; height: {{ height }};" aria-hidden="true" tabindex="-1"></div>
-<script>
+ #}
+ <div id="map" style="width: {{ width }}; height: {{ height }};" aria-hidden="true" tabindex="-1"></div>
+ <script>
   var map;
   function initMap() {
     var address = '{{ address }}';
@@ -34,7 +34,8 @@
       zoom: {{ zoom }},
       disableDefaultUI: {{ disable_default_ui }},
       scrollwheel: {{ scroll_wheel }},
-      draggable: {{ draggable }},
+      draggable: false,
+      scaleControl: false,
       disableDoubleClickZoom: {{ disable_double_click_zoom }},
       {% if styles %}
       styles: {{ styles | raw }},

@@ -1,0 +1,45 @@
+<ul id="filter" data-animate="fadeInUp">
+    <li class="active"><a href="#" data-filter="all">All</a></li>
+    {% for framework in frameworks %}
+    <li><a href="#" data-filter="{{ framework.term_data }}">{{ framework.name }}</a></li>
+    {% endfor %}
+</ul>
+
+<div id="detail">
+    <span class="close">&times;</span>
+    <div id="detail-slider"></div>
+    <div class="text-center">
+        <h1 id="detail-title">&nbsp;</h1>
+    </div>
+    <div id="detail-content"></div>
+</div>
+<!-- Reference detail -->
+
+<div id="references-masonry" data-animate="fadeInUp">
+    {% for result in results %}
+        <div class="reference-item" data-category="{{ result.category }}">
+            <div class="reference">
+                <a href="#">
+                    <img src="{{ result.thumbnail }}" class="img-responsive" alt="" />
+
+                    <div class="overlay">
+                        <h3 class="reference-title">{{ result.title }}</h3>
+                        <p>{{ result.short_desc}}</p>
+                    </div>
+                </a>                
+                <div class="sr-only reference-description" data-images="{{ result.gallery }}">
+                    {{ result.full_desc | raw }}
+                    <p class="buttons">
+                        {% if result.website %}
+                        <a class="btn btn-primary" href="{{ result.website }}" target="_blank"><i class="fa fa-globe"></i> Visit website</a>
+                        {% endif %}
+                        {% if result.case_study %}
+                        <a class="btn btn-primary" href="{{ result.case_study }}"><i class="fa fa-download"></i> Download case study</a>
+                        {% endif %}
+                    </p>
+                </div>               
+            </div>
+        </div>
+    {% endfor %}    
+</div>
+            
