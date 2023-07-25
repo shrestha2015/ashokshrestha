@@ -6234,5 +6234,30 @@
         }
     ],
     "dev": true,
-    "dev-package-names": []
+    "dev-package-names": [
+        "chi-teck/drupal-code-generator",
+        "consolidation/annotated-command",
+        "consolidation/config",
+        "consolidation/filter-via-dot-access-data",
+        "consolidation/log",
+        "consolidation/output-formatters",
+        "consolidation/robo",
+        "consolidation/self-update",
+        "consolidation/site-alias",
+        "consolidation/site-process",
+        "dflydev/dot-access-data",
+        "drush/drush",
+        "grasmash/expander",
+        "grasmash/yaml-cli",
+        "league/container",
+        "nikic/php-parser",
+        "phootwork/collection",
+        "phootwork/lang",
+        "phpowermove/docblock",
+        "psy/psysh",
+        "symfony/filesystem",
+        "symfony/finder",
+        "symfony/polyfill-php81",
+        "webflo/drupal-finder"
+    ]
 }

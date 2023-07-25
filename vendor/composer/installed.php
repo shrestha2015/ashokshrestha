@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'drupal/recommended-project',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'bce8ace6184066abfecdff4da6bc16d4008ada32',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -26,7 +26,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../chi-teck/drupal-code-generator',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'composer/installers' => array(
             'pretty_version' => 'v2.2.0',
@@ -53,7 +53,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/annotated-command',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'consolidation/config' => array(
             'pretty_version' => '2.1.2',
@@ -62,7 +62,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/config',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'consolidation/filter-via-dot-access-data' => array(
             'pretty_version' => '2.0.2',
@@ -71,7 +71,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/filter-via-dot-access-data',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'consolidation/log' => array(
             'pretty_version' => '3.0.0',
@@ -80,7 +80,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/log',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'consolidation/output-formatters' => array(
             'pretty_version' => '4.3.2',
@@ -89,7 +89,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/output-formatters',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'consolidation/robo' => array(
             'pretty_version' => '4.0.6',
@@ -98,7 +98,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/robo',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'consolidation/self-update' => array(
             'pretty_version' => '2.2.0',
@@ -107,7 +107,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/self-update',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'consolidation/site-alias' => array(
             'pretty_version' => '4.0.1',
@@ -116,7 +116,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/site-alias',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'consolidation/site-process' => array(
             'pretty_version' => '5.2.0',
@@ -125,7 +125,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/site-process',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'dflydev/dot-access-data' => array(
             'pretty_version' => 'v3.0.2',
@@ -134,7 +134,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../dflydev/dot-access-data',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'doctrine/annotations' => array(
             'pretty_version' => '1.14.3',
@@ -344,9 +344,9 @@
             ),
         ),
         'drupal/recommended-project' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'bce8ace6184066abfecdff4da6bc16d4008ada32',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -359,7 +359,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../drush/drush',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'egulias/email-validator' => array(
             'pretty_version' => '4.0.1',
@@ -377,7 +377,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../grasmash/expander',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'grasmash/yaml-cli' => array(
             'pretty_version' => '3.1.0',
@@ -386,7 +386,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../grasmash/yaml-cli',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'guzzlehttp/guzzle' => array(
             'pretty_version' => '7.7.0',
@@ -422,7 +422,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../league/container',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'masterminds/html5' => array(
             'pretty_version' => '2.8.0',
@@ -449,10 +449,10 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../nikic/php-parser',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'orno/di' => array(
-            'dev_requirement' => false,
+            'dev_requirement' => true,
             'replaced' => array(
                 0 => '~2.0',
             ),
@@ -500,7 +500,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phootwork/collection',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'phootwork/lang' => array(
             'pretty_version' => 'v3.2.2',
@@ -509,7 +509,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phootwork/lang',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'phpowermove/docblock' => array(
             'pretty_version' => 'v4.0',
@@ -518,7 +518,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpowermove/docblock',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'psr/cache' => array(
             'pretty_version' => '3.0.0',
@@ -627,7 +627,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'ralouphie/getallheaders' => array(
             'pretty_version' => '3.0.3',
@@ -720,7 +720,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/filesystem',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'symfony/finder' => array(
             'pretty_version' => 'v6.3.0',
@@ -729,7 +729,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/finder',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'symfony/http-foundation' => array(
             'pretty_version' => 'v6.3.1',
@@ -837,7 +837,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-php81',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'symfony/polyfill-php83' => array(
             'pretty_version' => 'v1.27.0',
@@ -969,7 +969,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../webflo/drupal-finder',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
     ),
 );
