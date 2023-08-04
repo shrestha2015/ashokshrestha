@@ -62,7 +62,7 @@
 /web/sites/simpletest
 
 # Ignore vendor dependencies and scripts
-/vendor
+/vendor/composer/
 /composer.phar
 /composer
 /robo.phar
