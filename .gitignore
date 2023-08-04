@@ -35,12 +35,9 @@
 /web/.editorconfig
 /web/.eslintignore
 /web/.eslintrc.json
-/web/.gitattributes
 /web/.htaccess
 /web/.ht.router.php
 /web/autoload.php
-/web/composer.json
-/web/composer.lock
 /web/example.gitignore
 /web/index.php
 /web/INSTALL.txt
@@ -63,14 +60,6 @@
 
 # Ignore vendor dependencies and scripts
 /vendor/composer/
-/composer.phar
-/composer
-/robo.phar
-/robo
-/drush.phar
-/drush
-/drupal.phar
-/drupal
 
 # If you prefer to store your .gitignore file in the sites/ folder, comment
 # or delete the previous settings and uncomment the following ones, instead.
