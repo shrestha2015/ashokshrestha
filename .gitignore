@@ -53,6 +53,7 @@
 
 # Ignore paths that contain user-generated content.
 /web/sites/default/files/
+/web/sites/default/files/*
 /web/sites/*/private
 
 # Ignore multi-site test environment.
