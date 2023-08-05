@@ -1,0 +1,22 @@
+name: latte
+type: theme
+'base theme': stable9
+starterkit: true
+version: VERSION
+libraries:
+  - latte/base
+  - latte/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - latte/user
+  core/drupal.dropbutton:
+    - latte/dropbutton
+  core/drupal.dialog:
+    - latte/dialog
+  file/drupal.file:
+    - latte/file
+  core/drupal.progress:
+    - latte/progress
+core_version_requirement: ^10
+generator: 'starterkit_theme:10.1.1'
