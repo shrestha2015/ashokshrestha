@@ -20,3 +20,22 @@ libraries-extend:
     - latte/progress
 core_version_requirement: ^10
 generator: 'starterkit_theme:10.1.1'
+regions:
+  sitelogo: 'Site logo'
+  navigation: 'Navigation'
+  banner: 'Banner'
+  breadcrumb: 'Breadcrumb'
+  content: 'Content'
+  introduction: 'Introduction'
+  about_me: 'About Me'
+  blog: 'Blogs'
+  testimonials: 'Testimonials'
+  showcase: 'Showcase'
+  mywork: 'My Work'
+  clients: 'Clients List'
+  contact: 'Contact'
+  map: 'Map'
+  social_share: 'Social Share'
+  copy_right: 'Copy Right'
+  disabled: 'Disabled'  
+
