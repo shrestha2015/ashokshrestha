@@ -1,0 +1,120 @@
+<?php /*** NAVIGATION SECTION ***/ ?>
+<section id="site-navigation">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                {{ page.sitelogo }}
+            </div>
+
+            <div class="navbar-collapse collapse" id="navigation">
+                {{ page.navigation }}
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+</section>
+<?php /*** NAVIGATION SECTION ENDS ***/ ?>
+
+<div id="all">
+    <?php /*** INTRO SECTION ***/ ?>
+    <div id="intro" class="clearfix">
+        {% if page.introduction %}
+            {{ page.introduction }}
+        {% endif %}
+    </div>
+    <?php /*** INTRO SECTION ENDS ***/ ?>
+
+    <?php /*** ABOUT ME SECTION ***/ ?>
+    <div class="section" id="about">
+        <div class="container">
+            <div class="row">
+                {% if page.about_me %}
+                    {{ page.about_me }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <?php /*** ABOUT ME SECTION ENDS  ***/ ?>
+
+    <!-- *** BLOGS SECTION ***  -->
+    {% if page.mywork %}
+        {{ page.mywork }}
+    {% endif %}
+    <!-- *** BLOGS SECTION ENDS *** -->
+
+    <!-- *** TESTIMONIALS SECTION ***  -->
+    {% if page.mywork %}
+        {{ page.mywork }}
+    {% endif %}
+    <!-- *** TESTIMONIALS SECTION ENDS *** -->
+
+    <!-- *** SHOWCASE SECTION ***  -->
+    {% if page.mywork %}
+        {{ page.mywork }}
+    {% endif %}
+    <!-- *** SHOWCASE SECTION ENDS *** -->
+
+    <!-- *** MYWORK SECTION ***  -->
+    <div class="section" id="mywork">
+        <div class="container">
+            <div class="col-sm-12">
+                {% if page.mywork %}
+                    {{ page.mywork }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- /.section -->
+    <!-- *** MYWORK SECTION ENDS *** -->
+    
+    <!-- *** CLIENT LIST SECTION ***  -->
+    {% if page.mywork %}
+        {{ page.mywork }}
+    {% endif %}
+    <!-- *** CLIENT LIST SECTION ENDS *** -->
+    <?php /*** CONTACT ***/ ?>
+    <div class="section contact" id="contact" data-animate="bounceIn">
+        <div class="container">
+            <div class="col-md-12">
+                {% if page.contact %}
+                    {{ page.contact }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <?php /*** CONTACT END ***/ ?>
+
+    <?php /*** Google Map START ***/ ?>
+    <div class="section" id="map">
+        {% if page.map %}
+            {{ page.map }}
+        {% endif %}
+    </div>
+    <?php /*** Google Map END ***/ ?>
+
+    <?php /*** FOOTER ***/ ?>
+    <div class="section" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="social">
+                        {% if page.social_share %}
+                            {{ page.social_share }}
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <p>&copy; {{ 'now' | date('Y') }} ashokshrestha.np@gmail.com all rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php /*** FOOTER END ***/ ?>
+
+</div>    
