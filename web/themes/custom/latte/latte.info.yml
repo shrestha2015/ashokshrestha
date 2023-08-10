@@ -23,12 +23,10 @@ generator: 'starterkit_theme:10.1.1'
 regions:
   sitelogo: 'Site logo'
   navigation: 'Navigation'
-  banner: 'Banner'
-  breadcrumb: 'Breadcrumb'
   content: 'Content'
   introduction: 'Introduction'
   about_me: 'About Me'
-  blog: 'Blogs'
+  services: 'Services'
   testimonials: 'Testimonials'
   showcase: 'Showcase'
   mywork: 'My Work'
@@ -38,4 +36,3 @@ regions:
   social_share: 'Social Share'
   copy_right: 'Copy Right'
   disabled: 'Disabled'  
-
