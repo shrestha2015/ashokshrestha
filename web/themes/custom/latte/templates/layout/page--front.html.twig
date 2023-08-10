@@ -30,6 +30,7 @@
     </div>
     <?php /*** INTRO SECTION ENDS ***/ ?>
 
+
     <?php /*** ABOUT ME SECTION ***/ ?>
     <div class="section" id="about">
         <div class="container">
@@ -42,11 +43,13 @@
     </div>
     <?php /*** ABOUT ME SECTION ENDS  ***/ ?>
 
-    <!-- *** BLOGS SECTION ***  -->
-    {% if page.mywork %}
-        {{ page.mywork }}
+
+    <!-- *** SERVICES SECTION ***  -->
+    {% if page.services %}
+        {{ page.services }}
     {% endif %}
-    <!-- *** BLOGS SECTION ENDS *** -->
+    <!-- *** SERVICES SECTION ENDS *** -->
+
 
     <!-- *** TESTIMONIALS SECTION ***  -->
     {% if page.mywork %}
@@ -54,11 +57,13 @@
     {% endif %}
     <!-- *** TESTIMONIALS SECTION ENDS *** -->
 
+
     <!-- *** SHOWCASE SECTION ***  -->
     {% if page.mywork %}
         {{ page.mywork }}
     {% endif %}
     <!-- *** SHOWCASE SECTION ENDS *** -->
+
 
     <!-- *** MYWORK SECTION ***  -->
     <div class="section" id="mywork">
@@ -72,12 +77,15 @@
     </div>
     <!-- /.section -->
     <!-- *** MYWORK SECTION ENDS *** -->
+
     
     <!-- *** CLIENT LIST SECTION ***  -->
     {% if page.mywork %}
         {{ page.mywork }}
     {% endif %}
     <!-- *** CLIENT LIST SECTION ENDS *** -->
+
+
     <?php /*** CONTACT ***/ ?>
     <div class="section contact" id="contact" data-animate="bounceIn">
         <div class="container">
@@ -90,6 +98,7 @@
     </div>
     <?php /*** CONTACT END ***/ ?>
 
+
     <?php /*** Google Map START ***/ ?>
     <div class="section" id="map">
         {% if page.map %}
@@ -97,6 +106,7 @@
         {% endif %}
     </div>
     <?php /*** Google Map END ***/ ?>
+
 
     <?php /*** FOOTER ***/ ?>
     <div class="section" id="footer">
