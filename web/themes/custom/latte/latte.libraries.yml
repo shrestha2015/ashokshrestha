@@ -103,3 +103,16 @@ user:
     component:
       css/components/user.css:
         weight: -10
+
+global-styling:
+  version: 1.0
+  css:
+    theme:
+      css/font-awesome.css: {}
+      css/bootstrap.min.css: {}
+      css/style.css: {}
+  js:
+    js/custom.js: {}
+  dependencies:
+    - core/jquery
+
