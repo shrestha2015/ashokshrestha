@@ -1,4 +1,4 @@
-<?php /*** NAVIGATION SECTION ***/ ?>
+{# --> NAVIGATION SECTION STARTS <-- #}
 <section id="site-navigation">
     <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
         <div class="container">
@@ -23,19 +23,20 @@
         </div>
     </div>
 </section>
-<?php /*** NAVIGATION SECTION ENDS ***/ ?>
+{# --> NAVIGATION SECTION ENDS <-- #}
+
 
 <div id="all">
-    <?php /*** INTRO SECTION ***/ ?>
+    {# --> INTRO SECTION STARTS <-- #}
     <div id="intro" class="clearfix">
         {% if page.introduction %}
             {{ page.introduction }}
         {% endif %}
     </div>
-    <?php /*** INTRO SECTION ENDS ***/ ?>
+    {# --> INTRO SECTION ENDS <-- #}
 
 
-    <?php /*** ABOUT ME SECTION ***/ ?>
+    {# --> ABOUT ME SECTION STARTS <-- #}
     <div class="section" id="about">
         <div class="container">
             <div class="row">
@@ -45,31 +46,31 @@
             </div>
         </div>
     </div>
-    <?php /*** ABOUT ME SECTION ENDS  ***/ ?>
+    {# --> ABOUT ME SECTION ENDS <-- #}
 
 
-    <!-- *** SERVICES SECTION ***  -->
+    {# --> SERVICES SECTION STARTS <-- #}
     {% if page.services %}
         {{ page.services }}
     {% endif %}
-    <!-- *** SERVICES SECTION ENDS *** -->
+    {# --> SERVICES SECTION ENDS <-- #}
 
 
-    <!-- *** TESTIMONIALS SECTION ***  -->
+    {# --> TESTIMONIALS SECTION STARTS <-- #}
     {% if page.mywork %}
         {{ page.mywork }}
     {% endif %}
-    <!-- *** TESTIMONIALS SECTION ENDS *** -->
+    {# --> TESTIMONIALS SECTION ENDS <-- #}
 
 
-    <!-- *** SHOWCASE SECTION ***  -->
+    {# --> SHOWCASE SECTION STARTS <-- #}
     {% if page.showcase %}
         {{ page.showcase }}
     {% endif %}
-    <!-- *** SHOWCASE SECTION ENDS *** -->
+    {# --> SHOWCASE SECTION ENDS <-- #}
 
 
-    <!-- *** MYWORK SECTION ***  -->
+    {# --> MYWORK SECTION STARTS <-- #}
     <div class="section" id="mywork">
         <div class="container">
             <div class="col-sm-12">
@@ -79,18 +80,17 @@
             </div>
         </div>
     </div>
-    <!-- /.section -->
-    <!-- *** MYWORK SECTION ENDS *** -->
+    {# --> MYWORK SECTION STARTS <-- #}
 
     
-    <!-- *** CLIENT LIST SECTION ***  -->
+    {# --> CLIENT LIST SECTION STARTS <-- #}
     {% if page.mywork %}
         {{ page.mywork }}
     {% endif %}
-    <!-- *** CLIENT LIST SECTION ENDS *** -->
+    {# --> CLIENT LIST SECTION ENDS <-- #}
 
 
-    <?php /*** CONTACT ***/ ?>
+    {# --> CONTACT SECTION STARTS <-- #}
     <div class="section contact" id="contact" data-animate="bounceIn">
         <div class="container">
             <div class="col-md-12">
@@ -100,19 +100,20 @@
             </div>
         </div>
     </div>
-    <?php /*** CONTACT END ***/ ?>
+    {# --> CONTACT SECTION STARTS <-- #}
 
 
+    {# --> MAP SECTION STARTS <-- #}
     <?php /*** Google Map START ***/ ?>
     <div class="section" id="map">
         {% if page.map %}
             {{ page.map }}
         {% endif %}
     </div>
-    <?php /*** Google Map END ***/ ?>
+    {# --> MAP SECTION ENDS <-- #}
 
 
-    <?php /*** FOOTER ***/ ?>
+    {# --> FOOTER SECTION STARTS <-- #}
     <div class="section" id="footer">
         <div class="container">
             <div class="row">
@@ -129,6 +130,6 @@
             </div>
         </div>
     </div>
-    <?php /*** FOOTER END ***/ ?>
+    {# --> FOOTER SECTION ENDS <-- #}
 
 </div>    
