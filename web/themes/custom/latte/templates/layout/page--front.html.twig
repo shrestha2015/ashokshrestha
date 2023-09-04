@@ -50,9 +50,16 @@
 
 
     {# --> SERVICES SECTION STARTS <-- #}
-    {% if page.services %}
-        {{ page.services }}
-    {% endif %}
+    <div class="section text-gradient" id="services">
+        <div class="container">
+            <div class="col-md-12">
+                {% if page.services %}
+                    {{ page.services }}
+                {% endif %}
+                
+            </div>        
+        </div>
+    </div>
     {# --> SERVICES SECTION ENDS <-- #}
 
 
