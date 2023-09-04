@@ -108,11 +108,27 @@ global-styling:
   version: 1.0
   css:
     theme:
+      'http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,100%7CRoboto:400,700,300,100': { type: external }
       css/font-awesome.css: {}
       css/bootstrap.min.css: {}
+      css/owl.carousel.css: {}
+      css/owl.theme.css: {}
+      css/animate.css: {}
       css/style.css: {}
   js:
-    js/custom.js: {}
+    js/bootstrap.min.js: {}
+    js/jquery.cookie.js: {}
+    js/waypoints.min.js: {}
+    js/masonry.pkgd.min.js: {}
+    js/owl.carousel.min.js: {}
+    js/jquery.scrollTo.min.js: {}
+    js/script.js: {}
   dependencies:
     - core/jquery
+    - core/modernizr
+    - core/drupal.ajax
+    - core/drupal
+    - core/drupalSettings
+    - core/jquery.once
+    - core/jquery.ui
 
