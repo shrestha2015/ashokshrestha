@@ -1,0 +1,22 @@
+name: leo
+type: theme
+'base theme': stable9
+starterkit: true
+version: VERSION
+libraries:
+  - leo/base
+  - leo/messages
+  - core/normalize
+libraries-extend:
+  user/drupal.user:
+    - leo/user
+  core/drupal.dropbutton:
+    - leo/dropbutton
+  core/drupal.dialog:
+    - leo/dialog
+  file/drupal.file:
+    - leo/file
+  core/drupal.progress:
+    - leo/progress
+core_version_requirement: ^10
+generator: 'starterkit_theme:10.1.1'
