@@ -1,7 +1,7 @@
 jQuery(function () {
     fullScreenContainer();
     animations();   
-    //sliders();
+    sliders();
     
     addclasstoimage();        
     utils();
@@ -285,6 +285,22 @@ function sliding() {
     jQuery('body').scrollTo(jQuery('#' + trgt), 800, {offset: -80});
 
     });
+}
+
+/* =========================================
+ * sliders 
+ *  =======================================*/
+
+function sliders() {
+    if (jQuery('.owl-carousel').length) {
+        jQuery(".testimonials").owlCarousel({
+            items: 4,
+            itemsDesktopSmall: [1170, 3],
+            itemsTablet: [970, 2],
+            itemsMobile: [750, 1]
+        });
+    }
+
 }
 
 /* =========================================

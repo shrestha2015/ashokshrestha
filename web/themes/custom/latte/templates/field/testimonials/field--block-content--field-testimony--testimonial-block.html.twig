@@ -59,7 +59,7 @@
       <ul class="owl-carousel testimonials same-height-row" data-animate="fadeInUp">
         {% for item in items %}
           <li class="item">
-            <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+            <div{{ item.attributes.addClass('field__item testimonial same-height-always') }}>{{ item.content }}</div>
           </li>
         {% endfor %}
       </ul>
