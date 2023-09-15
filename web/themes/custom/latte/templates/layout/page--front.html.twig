@@ -77,9 +77,18 @@
 
 
     {# --> SHOWCASE SECTION STARTS <-- #}
-    {% if page.showcase %}
-        {{ page.showcase }}
-    {% endif %}
+    {# --><div class="section text-parallax parallax-image1" id="services" style="background: url('ashokshrestha/web/sites/default/files/images/showcase/background_image/parallax_1.jpg') center center no-repeat fixed;">
+    <-- #}
+    <div class="section text-parallax parallax-image1" id="services">
+        <div class="container">
+            <div class="row showcase">
+                {% if page.showcase %}
+                    {{ page.showcase }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="dark-mask"></div>
+    </div>
     {# --> SHOWCASE SECTION ENDS <-- #}
 
 
