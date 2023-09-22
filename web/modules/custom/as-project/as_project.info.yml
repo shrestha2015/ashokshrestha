@@ -1,0 +1,5 @@
+name: Ashok Project
+type: module
+description: Provides functionality related to projects.
+core_version_requirement: ^9 || ^10
+package: Ashok
