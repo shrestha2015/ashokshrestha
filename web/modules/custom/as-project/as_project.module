@@ -1,0 +1,28 @@
+<?php
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Link;
+
+
+/**
+ * Implements hook_base_form_alter().
+ *
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function as_project_theme($existing, $type, $theme, $path){
+    return array(
+        'featured_projects' => [
+        'variables' => [
+            'frameworks' => NULL,
+            'results' => NULL,
+        ]
+    ]);
+}
+function as_project_form_alter(&$form, $form_state, $form_id) {
+  //kint($form_id);
+  $alterformid=$form['#id'];
+  //kint($alterformid);
+  //var_dump($form_id);
+}
