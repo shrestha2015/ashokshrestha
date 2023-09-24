@@ -1,0 +1,4 @@
+address_map:
+  version: 1.x
+  js:
+    'https://maps.googleapis.com/maps/api/js?key=AIzaSyBPMXsL_aQWZ5T76nxu8QiiDJX4eMiAYDU&callback=initMap': { type: external, attributes: { defer: true, async: true } }

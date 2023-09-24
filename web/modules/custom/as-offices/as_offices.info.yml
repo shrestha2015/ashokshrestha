@@ -1,0 +1,7 @@
+name: Ashok Offices
+type: module
+description: Provides functionality related to office maps.
+core_version_requirement: ^9 || ^10
+package: Ashok
+dependencies:
+  - address:address (>=1.12)
