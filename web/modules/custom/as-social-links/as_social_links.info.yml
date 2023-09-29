@@ -1,0 +1,5 @@
+name: Ashok Social Links
+type: module
+description: Provides functionality related to social links.
+core_version_requirement: ^9 || ^10
+package: Ashok

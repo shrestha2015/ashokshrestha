@@ -758,6 +758,28 @@ FOOTER
   font-size: 14px;
   line-height: 50px;
 }
+#footer .item-list ul {
+  text-align: left;
+  list-style: none;
+}
+#footer .item-list ul > li {
+  display: inline-block;
+}
+#footer .item-list ul> li> a {
+  margin-left: 10px;
+  color: #fff;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  line-height: 50px;
+  font-size: 25px;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
 #footer p.social {
   text-align: left;
 }
@@ -776,16 +798,31 @@ FOOTER
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-#footer p.social a.facebook {
+#footer ul > li a.facebook {
   background-color: #4460ae;
 }
-#footer p.social a.gplus {
+#footer ul > li a.gplus {
   background-color: #c21f25;
 }
-#footer p.social a.instagram {
+#footer ul > li a.instagram {
   background-color: #cd4378;
 }
-#footer p.social a.email {
+#footer ul > li a.ytube {
+  background-color: #ff0000;
+}
+#footer ul > li a.twitter {
+  background-color: #1ab2e8;
+}
+#footer ul > li a.linkedin {
+  background-color: #0077b5;
+}
+#footer ul > li a.tumblr {
+  background-color: #314358;
+}
+#footer ul > li a.pinterest {
+  background-color: #E60023;
+}
+#footer ul > li a.email {
   background-color: #4a7f45;
 }
 @media (max-width: 767px) {
