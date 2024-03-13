@@ -9,7 +9,7 @@ jQuery(function () {
     // contactForm();
     // map();
     // counters();
-    // parallax();
+    parallax();
     // demo();
 });
 
@@ -89,6 +89,16 @@ function animations() {
        jQuery('[data-animate]').css({opacity: '1'}); 
     }
 
+}
+
+/* =========================================
+ * parallax 
+ *  =======================================*/
+
+function parallax() {
+
+    jQuery('.text-parallax').parallax("50%", 0.1);
+    
 }
 
 /* =========================================
