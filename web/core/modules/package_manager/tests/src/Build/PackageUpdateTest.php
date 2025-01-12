@@ -10,7 +10,6 @@ use Drupal\package_manager_test_api\ControllerStage;
  * Tests updating packages in a stage directory.
  *
  * @group package_manager
- * @group #slow
  * @internal
  */
 class PackageUpdateTest extends TemplateProjectTestBase {

@@ -14,9 +14,11 @@ use function json_decode;
 class DataProviderHelperFactory
 {
 
-	private ReflectionProvider $reflectionProvider;
+	/** @var ReflectionProvider */
+	private $reflectionProvider;
 
-	private FileTypeMapper $fileTypeMapper;
+	/** @var FileTypeMapper */
+	private $fileTypeMapper;
 
 	public function __construct(ReflectionProvider $reflectionProvider, FileTypeMapper $fileTypeMapper)
 	{

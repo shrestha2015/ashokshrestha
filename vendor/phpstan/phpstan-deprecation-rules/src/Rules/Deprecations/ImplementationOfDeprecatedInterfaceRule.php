@@ -17,9 +17,11 @@ use function sprintf;
 class ImplementationOfDeprecatedInterfaceRule implements Rule
 {
 
-	private ReflectionProvider $reflectionProvider;
+	/** @var ReflectionProvider */
+	private $reflectionProvider;
 
-	private DeprecatedScopeHelper $deprecatedScopeHelper;
+	/** @var DeprecatedScopeHelper */
+	private $deprecatedScopeHelper;
 
 	public function __construct(ReflectionProvider $reflectionProvider, DeprecatedScopeHelper $deprecatedScopeHelper)
 	{
@@ -67,27 +69,27 @@ class ImplementationOfDeprecatedInterfaceRule implements Rule
 							$errors[] = RuleErrorBuilder::message(sprintf(
 								'Class %s implements deprecated interface %s.',
 								$className,
-								$interfaceName,
+								$interfaceName
 							))->identifier('class.implementsDeprecatedInterface')->build();
 						} else {
 							$errors[] = RuleErrorBuilder::message(sprintf(
 								"Class %s implements deprecated interface %s:\n%s",
 								$className,
 								$interfaceName,
-								$description,
+								$description
 							))->identifier('class.implementsDeprecatedInterface')->build();
 						}
 					} else {
 						if ($description === null) {
 							$errors[] = RuleErrorBuilder::message(sprintf(
 								'Anonymous class implements deprecated interface %s.',
-								$interfaceName,
+								$interfaceName
 							))->identifier('class.implementsDeprecatedInterface')->build();
 						} else {
 							$errors[] = RuleErrorBuilder::message(sprintf(
 								"Anonymous class implements deprecated interface %s:\n%s",
 								$interfaceName,
-								$description,
+								$description
 							))->identifier('class.implementsDeprecatedInterface')->build();
 						}
 					}

@@ -404,8 +404,6 @@ interface ModuleHandlerInterface {
    * directories.
    *
    * @return array
-   *   An associative array of the directories for all enabled modules, keyed by
-   *   the extension machine name.
    */
   public function getModuleDirectories();
 

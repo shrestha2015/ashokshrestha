@@ -20,7 +20,7 @@ class LanguageTestHooks {
   #[Hook('page_top')]
   public function pageTop(): void {
     if (\Drupal::moduleHandler()->moduleExists('language')) {
-      $this->storeLanguageNegotiation();
+      language_test_store_language_negotiation();
       \Drupal::messenger()->addStatus(t('Language negotiation method: @name', [
         '@name' => \Drupal::languageManager()->getNegotiatedLanguageMethod() ?? 'Not defined',
       ]));
@@ -102,7 +102,7 @@ class LanguageTestHooks {
    * Implements hook_module_preinstall().
    */
   #[Hook('module_preinstall')]
-  public function modulePreinstall(): void {
+  public function modulePreinstall() {
     \Drupal::state()->set('language_test.language_count_preinstall', count(\Drupal::languageManager()->getLanguages()));
   }
 
@@ -113,17 +113,6 @@ class LanguageTestHooks {
   public function languageSwitchLinksAlter(array &$links, $type, Url $url): void {
     // Record which languages had links passed in.
     \Drupal::state()->set('language_test.language_switch_link_ids', array_keys($links));
-  }
-
-  /**
-   * Store the last negotiated languages.
-   */
-  public function storeLanguageNegotiation(): void {
-    $last = [];
-    foreach (\Drupal::languageManager()->getDefinedLanguageTypes() as $type) {
-      $last[$type] = \Drupal::languageManager()->getCurrentLanguage($type)->getId();
-    }
-    \Drupal::keyValue('language_test')->set('language_negotiation_last', $last);
   }
 
 }

@@ -24,11 +24,14 @@ use function strtolower;
 class AccessDeprecatedStaticPropertyRule implements Rule
 {
 
-	private ReflectionProvider $reflectionProvider;
+	/** @var ReflectionProvider */
+	private $reflectionProvider;
 
-	private RuleLevelHelper $ruleLevelHelper;
+	/** @var RuleLevelHelper */
+	private $ruleLevelHelper;
 
-	private DeprecatedScopeHelper $deprecatedScopeHelper;
+	/** @var DeprecatedScopeHelper */
+	private $deprecatedScopeHelper;
 
 	public function __construct(ReflectionProvider $reflectionProvider, RuleLevelHelper $ruleLevelHelper, DeprecatedScopeHelper $deprecatedScopeHelper)
 	{
@@ -62,7 +65,9 @@ class AccessDeprecatedStaticPropertyRule implements Rule
 				$scope,
 				$node->class,
 				'', // We don't care about the error message
-				static fn (Type $type): bool => $type->canAccessProperties()->yes() && $type->hasProperty($propertyName)->yes(),
+				static function (Type $type) use ($propertyName): bool {
+					return $type->canAccessProperties()->yes() && $type->hasProperty($propertyName)->yes();
+				}
 			);
 
 			if ($classTypeResult->getType() instanceof ErrorType) {
@@ -90,7 +95,7 @@ class AccessDeprecatedStaticPropertyRule implements Rule
 							'Access to deprecated static property $%s of %s %s.',
 							$propertyName,
 							strtolower($property->getDeclaringClass()->getClassTypeDescription()),
-							$property->getDeclaringClass()->getName(),
+							$property->getDeclaringClass()->getName()
 						))->identifier('staticProperty.deprecated')->build(),
 					];
 				}
@@ -101,7 +106,7 @@ class AccessDeprecatedStaticPropertyRule implements Rule
 						$propertyName,
 						strtolower($property->getDeclaringClass()->getClassTypeDescription()),
 						$property->getDeclaringClass()->getName(),
-						$description,
+						$description
 					))->identifier('staticProperty.deprecated')->build(),
 				];
 			}

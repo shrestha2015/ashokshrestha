@@ -33,17 +33,18 @@ class Textarea extends FormElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#input' => TRUE,
       '#cols' => 60,
       '#rows' => 5,
       '#resizable' => 'vertical',
       '#process' => [
-        [static::class, 'processAjaxForm'],
-        [static::class, 'processGroup'],
+        [$class, 'processAjaxForm'],
+        [$class, 'processGroup'],
       ],
       '#pre_render' => [
-        [static::class, 'preRenderGroup'],
+        [$class, 'preRenderGroup'],
       ],
       '#theme' => 'textarea',
       '#theme_wrappers' => ['form_element'],

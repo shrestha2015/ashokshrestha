@@ -21,14 +21,12 @@ class BlockContentRevisionsTest extends BlockContentTestBase {
 
   /**
    * Stores blocks created during the test.
-   *
    * @var array
    */
   protected $blocks;
 
   /**
    * Stores log messages used during the test.
-   *
    * @var array
    */
   protected $revisionLogs;

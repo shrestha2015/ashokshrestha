@@ -40,7 +40,7 @@ class NestedEntityTestForm extends FormBase {
     $form_state->set('form_display_2', $form_display_2);
     $form['entity_2'] = [
       '#type' => 'details',
-      '#title' => $this->t('Second entity'),
+      '#title' => t('Second entity'),
       '#tree' => TRUE,
       '#parents' => ['entity_2'],
       '#weight' => 50,
@@ -60,7 +60,7 @@ class NestedEntityTestForm extends FormBase {
 
     $form['save'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Save'),
+      '#value' => t('Save'),
       '#weight' => 100,
     ];
 

@@ -48,7 +48,6 @@ use Drupal\Core\Render\Element;
  *     since all user agents automatically preselect the first available
  *     option. But people are used to this being the behavior of select
  *     controls.
- *
  *     @todo Address the above issue in Drupal 8.
  *   - If #required is not TRUE and this value is set (most commonly to an
  *     empty string), then an extra option (see #empty_option above)
@@ -86,17 +85,18 @@ class Select extends FormElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#input' => TRUE,
       '#multiple' => FALSE,
       '#sort_options' => FALSE,
       '#sort_start' => NULL,
       '#process' => [
-        [static::class, 'processSelect'],
-        [static::class, 'processAjaxForm'],
+        [$class, 'processSelect'],
+        [$class, 'processAjaxForm'],
       ],
       '#pre_render' => [
-        [static::class, 'preRenderSelect'],
+        [$class, 'preRenderSelect'],
       ],
       '#theme' => 'select',
       '#theme_wrappers' => ['form_element'],

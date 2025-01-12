@@ -89,7 +89,6 @@ class ListFloatItem extends ListItemBase {
     if (!is_numeric($option)) {
       return new TranslatableMarkup('Allowed values list: each key must be a valid integer or decimal.');
     }
-    return NULL;
   }
 
   /**

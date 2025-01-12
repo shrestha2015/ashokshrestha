@@ -153,9 +153,9 @@ abstract class DrupalSqlBase extends SqlBase implements DependentPluginInterface
   /**
    * Reads a variable from a source Drupal database.
    *
-   * @param string $name
+   * @param $name
    *   Name of the variable.
-   * @param mixed $default
+   * @param $default
    *   The default value.
    *
    * @return mixed

@@ -66,9 +66,9 @@ interface ViewsHandlerInterface extends ViewsPluginInterface {
   /**
    * Sanitize the value for output.
    *
-   * @param mixed $value
+   * @param $value
    *   The value being rendered.
-   * @param string $type
+   * @param $type
    *   The type of sanitization needed. If not provided,
    *   \Drupal\Component\Utility\Html::escape() is used.
    *

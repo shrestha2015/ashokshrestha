@@ -59,7 +59,6 @@ class ThemeInstallController extends ControllerBase {
 
   /**
    * Install a theme as the admin theme.
-   *
    * @param string $theme
    *   The theme to install as the admin theme.
    *

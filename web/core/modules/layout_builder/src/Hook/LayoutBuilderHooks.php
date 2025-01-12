@@ -2,7 +2,6 @@
 
 namespace Drupal\layout_builder\Hook;
 
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Link;
 use Drupal\Core\Breadcrumb\Breadcrumb;
@@ -262,7 +261,7 @@ class LayoutBuilderHooks {
    * Implements hook_ENTITY_TYPE_access().
    */
   #[Hook('block_content_access')]
-  public function blockContentAccess(EntityInterface $entity, $operation, AccountInterface $account): AccessResultInterface {
+  public function blockContentAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     /** @var \Drupal\block_content\BlockContentInterface $entity */
     if ($operation === 'view' || $entity->isReusable() || empty(\Drupal::service('inline_block.usage')->getUsage($entity->id()))) {
       // If the operation is 'view' or this is reusable block or if this is

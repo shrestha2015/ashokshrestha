@@ -2,7 +2,6 @@
 
 namespace Drupal\node\Hook;
 
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\language\ConfigurableLanguageInterface;
 use Drupal\Core\Database\Query\SelectInterface;
 use Drupal\Core\Database\Query\AlterableInterface;
@@ -210,7 +209,7 @@ class NodeHooks1 {
    * Implements hook_ranking().
    */
   #[Hook('ranking')]
-  public function ranking(): array {
+  public function ranking() {
     // Create the ranking array and add the basic ranking options.
     $ranking = [
       'relevance' => [
@@ -362,7 +361,7 @@ class NodeHooks1 {
    * Implements hook_ENTITY_TYPE_access().
    */
   #[Hook('node_access')]
-  public function nodeAccess(NodeInterface $node, $operation, AccountInterface $account): AccessResultInterface {
+  public function nodeAccess(NodeInterface $node, $operation, AccountInterface $account) {
     $type = $node->bundle();
     // Note create access is handled by hook_ENTITY_TYPE_create_access().
     switch ($operation) {
@@ -470,7 +469,7 @@ class NodeHooks1 {
    * Implements hook_modules_installed().
    */
   #[Hook('modules_installed')]
-  public function modulesInstalled(array $modules): void {
+  public function modulesInstalled(array $modules) {
     // Check if any of the newly enabled modules require the node_access table to
     // be rebuilt.
     if (!node_access_needs_rebuild() && \Drupal::moduleHandler()->hasImplementations('node_grants', $modules)) {
@@ -482,7 +481,7 @@ class NodeHooks1 {
    * Implements hook_modules_uninstalled().
    */
   #[Hook('modules_uninstalled')]
-  public function modulesUninstalled($modules): void {
+  public function modulesUninstalled($modules) {
     // Check whether any of the disabled modules implemented hook_node_grants(),
     // in which case the node access table needs to be rebuilt.
     foreach ($modules as $module) {

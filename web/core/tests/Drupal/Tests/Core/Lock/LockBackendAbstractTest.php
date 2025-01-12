@@ -46,7 +46,6 @@ class LockBackendAbstractTest extends UnitTestCase {
    * Tests the wait() method when lockMayBeAvailable() returns FALSE.
    *
    * Waiting could take 1 second so we need to extend the possible runtime.
-   *
    * @medium
    */
   public function testWaitTrue(): void {

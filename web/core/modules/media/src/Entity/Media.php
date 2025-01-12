@@ -344,7 +344,7 @@ class Media extends EditorialContentEntityBase implements MediaInterface {
    */
   protected function hasSourceFieldChanged() {
     $source = $this->getSource();
-    return $this->getOriginal() && $source->getSourceFieldValue($this) !== $source->getSourceFieldValue($this->getOriginal());
+    return isset($this->original) && $source->getSourceFieldValue($this) !== $source->getSourceFieldValue($this->original);
   }
 
   /**
@@ -400,13 +400,13 @@ class Media extends EditorialContentEntityBase implements MediaInterface {
   public function preSaveRevision(EntityStorageInterface $storage, \stdClass $record) {
     parent::preSaveRevision($storage, $record);
 
-    if (!$this->isNewRevision() && $this->getOriginal() && empty($record->revision_log_message)) {
+    if (!$this->isNewRevision() && isset($this->original) && empty($record->revision_log_message)) {
       // If we are updating an existing media item without adding a
       // new revision, we need to make sure $entity->revision_log_message is
       // reset whenever it is empty.
       // Therefore, this code allows us to avoid clobbering an existing log
       // entry with an empty one.
-      $this->setRevisionLogMessage($this->getOriginal()->getRevisionLogMessage());
+      $this->setRevisionLogMessage($this->original->getRevisionLogMessage());
     }
   }
 
@@ -429,14 +429,13 @@ class Media extends EditorialContentEntityBase implements MediaInterface {
     // operations during entity save. See
     // https://www.drupal.org/project/drupal/issues/2976875 for more.
 
-    // In order for metadata to be mapped correctly, the original entity must be
+    // In order for metadata to be mapped correctly, $this->original must be
     // set. However, that is only set once parent::save() is called, so work
     // around that by setting it here.
-    if (!$this->getOriginal() && $id = $this->id()) {
-      $this->setOriginal($this->entityTypeManager()
+    if (!isset($this->original) && $id = $this->id()) {
+      $this->original = $this->entityTypeManager()
         ->getStorage('media')
-        ->loadUnchanged($id)
-      );
+        ->loadUnchanged($id);
     }
 
     $media_source = $this->getSource();

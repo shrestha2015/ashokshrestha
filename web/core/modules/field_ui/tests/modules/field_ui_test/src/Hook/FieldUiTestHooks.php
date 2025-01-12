@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\field_ui_test\Hook;
 
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Access\AccessResult;
@@ -20,7 +19,7 @@ class FieldUiTestHooks {
    * Implements hook_ENTITY_TYPE_access().
    */
   #[Hook('field_config_access')]
-  public function fieldConfigAccess(FieldConfigInterface $field): AccessResultInterface {
+  public function fieldConfigAccess(FieldConfigInterface $field) {
     return AccessResult::forbiddenIf($field->getName() == 'highlander');
   }
 
@@ -43,7 +42,7 @@ class FieldUiTestHooks {
         'id' => 'indent-id',
       ],
       '#row_type' => 'group',
-      '#region_callback' => [$this, 'regionCallback'],
+      '#region_callback' => 'field_ui_test_region_callback',
       '#js_settings' => [
         'rowHandler' => 'group',
       ],
@@ -92,10 +91,6 @@ class FieldUiTestHooks {
         ],
       ],
     ];
-  }
-
-  public function regionCallback($row): string {
-    return 'content';
   }
 
 }

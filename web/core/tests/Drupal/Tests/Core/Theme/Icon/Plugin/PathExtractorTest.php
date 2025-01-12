@@ -125,7 +125,7 @@ class PathExtractorTest extends UnitTestCase {
 
     // Result expected is keyed by icon_id with values 'source' and 'group'.
     $expected_result = [];
-    foreach ($files as $icon) {
+    foreach ($files as $index => $icon) {
       $expected_id = $this->pluginId . IconDefinition::ICON_SEPARATOR . $icon['icon_id'];
       if (!isset($icon['group'])) {
         $icon['group'] = NULL;

@@ -475,7 +475,7 @@ class BigPipeTest extends BrowserTestBase {
    * @internal
    */
   protected function assertSetsEqual(array $a, array $b): void {
-    count($a) == count($b) && !array_diff_assoc($a, $b);
+    $result = count($a) == count($b) && !array_diff_assoc($a, $b);
   }
 
   /**

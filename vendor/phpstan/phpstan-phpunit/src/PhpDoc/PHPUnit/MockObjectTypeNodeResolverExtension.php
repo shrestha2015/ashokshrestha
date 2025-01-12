@@ -17,7 +17,8 @@ use function count;
 class MockObjectTypeNodeResolverExtension implements TypeNodeResolverExtension, TypeNodeResolverAwareExtension
 {
 
-	private TypeNodeResolver $typeNodeResolver;
+	/** @var TypeNodeResolver */
+	private $typeNodeResolver;
 
 	public function setTypeNodeResolver(TypeNodeResolver $typeNodeResolver): void
 	{

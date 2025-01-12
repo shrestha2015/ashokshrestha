@@ -23,10 +23,10 @@ interface StatementInterface extends \Traversable {
   /**
    * Executes a prepared statement.
    *
-   * @param array|null $args
+   * @param $args
    *   An array of values with as many elements as there are bound parameters in
    *   the SQL statement being executed. This can be NULL.
-   * @param array $options
+   * @param $options
    *   An array of options for this query.
    *
    * @return bool
@@ -68,14 +68,14 @@ interface StatementInterface extends \Traversable {
    * See http://php.net/manual/pdo.constants.php for the definition of the
    * constants used.
    *
-   * @param int $mode
+   * @param $mode
    *   One of the \PDO::FETCH_* constants.
-   * @param int|null $a1
+   * @param $a1
    *   An option depending of the fetch mode specified by $mode:
    *   - for \PDO::FETCH_COLUMN, the index of the column to fetch
    *   - for \PDO::FETCH_CLASS, the name of the class to create
    *   - for \PDO::FETCH_INTO, the object to add the data to
-   * @param array $a2
+   * @param $a2
    *   If $mode is \PDO::FETCH_CLASS, the optional arguments to pass to the
    *   constructor.
    */
@@ -87,12 +87,12 @@ interface StatementInterface extends \Traversable {
    * See http://php.net/manual/pdo.constants.php for the definition of the
    * constants used.
    *
-   * @param int $mode
+   * @param $mode
    *   One of the \PDO::FETCH_* constants.
    *   Default to what was specified by setFetchMode().
-   * @param int|null $cursor_orientation
+   * @param $cursor_orientation
    *   Not implemented in all database drivers, don't use.
-   * @param int|null $cursor_offset
+   * @param $cursor_offset
    *   Not implemented in all database drivers, don't use.
    *
    * @return array|object|false
@@ -103,14 +103,11 @@ interface StatementInterface extends \Traversable {
   /**
    * Returns a single field from the next record of a result set.
    *
-   * @param int $index
+   * @param $index
    *   The numeric index of the field to return. Defaults to the first field.
    *
    * @return mixed
    *   A single field from the next record, or FALSE if there is no next record.
-   *
-   * @throws \ValueError
-   *   If there is a record and the column index is not defined.
    */
   public function fetchField($index = 0);
 
@@ -146,11 +143,11 @@ interface StatementInterface extends \Traversable {
   /**
    * Returns an array containing all of the result set rows.
    *
-   * @param int|null $mode
+   * @param $mode
    *   One of the \PDO::FETCH_* constants.
-   * @param int|null $column_index
+   * @param $column_index
    *   If $mode is \PDO::FETCH_COLUMN, the index of the column to fetch.
-   * @param array $constructor_arguments
+   * @param $constructor_arguments
    *   If $mode is \PDO::FETCH_CLASS, the arguments to pass to the constructor.
    *
    * @return array
@@ -163,7 +160,7 @@ interface StatementInterface extends \Traversable {
    *
    * Note that this method will run the result set to the end.
    *
-   * @param int $index
+   * @param $index
    *   The index of the column number to fetch.
    *
    * @return array
@@ -181,9 +178,9 @@ interface StatementInterface extends \Traversable {
    *
    * Note that this method will run the result set to the end.
    *
-   * @param int $key_index
+   * @param $key_index
    *   The numeric index of the field to use as the array key.
-   * @param int $value_index
+   * @param $value_index
    *   The numeric index of the field to use as the array value.
    *
    * @return array
@@ -197,9 +194,9 @@ interface StatementInterface extends \Traversable {
    * If the given key appears multiple times, later records will overwrite
    * earlier ones.
    *
-   * @param string $key
+   * @param $key
    *   The name of the field on which to index the array.
-   * @param int|null $fetch
+   * @param $fetch
    *   The fetch mode to use. If set to \PDO::FETCH_ASSOC, \PDO::FETCH_NUM, or
    *   \PDO::FETCH_BOTH the returned value with be an array of arrays. For any
    *   other value it will be an array of objects. By default, the fetch mode

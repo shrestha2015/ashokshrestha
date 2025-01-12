@@ -123,7 +123,6 @@ class EntityUser extends EntityContentBase {
 
   /**
    * {@inheritdoc}
-   *
    * @throws \Drupal\migrate\MigrateException
    */
   public function import(Row $row, array $old_destination_id_values = []) {

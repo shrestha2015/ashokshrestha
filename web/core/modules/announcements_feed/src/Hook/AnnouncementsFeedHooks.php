@@ -38,7 +38,7 @@ class AnnouncementsFeedHooks {
    * Implements hook_toolbar().
    */
   #[Hook('toolbar')]
-  public function toolbar(): array {
+  public function toolbar() {
     if (!\Drupal::currentUser()->hasPermission('access announcements')) {
       return ['#cache' => ['contexts' => ['user.permissions']]];
     }

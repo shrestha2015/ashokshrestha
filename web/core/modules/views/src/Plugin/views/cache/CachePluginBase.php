@@ -75,7 +75,7 @@ abstract class CachePluginBase extends PluginBase {
    *
    * Plugins must override this to implement expiration.
    *
-   * @param string $type
+   * @param $type
    *   The cache type, either 'query', 'result'.
    */
   protected function cacheExpire($type) {
@@ -103,7 +103,7 @@ abstract class CachePluginBase extends PluginBase {
    *
    * A plugin should override this to provide specialized caching behavior.
    *
-   * @param string $type
+   * @param $type
    *   The cache type, either 'query', 'result'.
    */
   public function cacheSet($type) {
@@ -129,7 +129,7 @@ abstract class CachePluginBase extends PluginBase {
    *
    * A plugin should override this to provide specialized caching behavior.
    *
-   * @param string $type
+   * @param $type
    *   The cache type, either 'query', 'result'.
    *
    * @return bool

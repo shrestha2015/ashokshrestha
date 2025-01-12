@@ -81,7 +81,7 @@ function node_mass_update(array $nodes, array $updates, $langcode = NULL, $load 
 function _node_mass_update_helper(NodeInterface $node, array $updates, $langcode = NULL) {
   $langcodes = isset($langcode) ? [$langcode] : array_keys($node->getTranslationLanguages());
   // For efficiency manually save the original node before applying any changes.
-  $node->setOriginal(clone $node);
+  $node->original = clone $node;
   foreach ($langcodes as $langcode) {
     foreach ($updates as $name => $value) {
       $node->getTranslation($langcode)->$name = $value;

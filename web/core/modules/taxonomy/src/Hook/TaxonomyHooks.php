@@ -97,7 +97,7 @@ class TaxonomyHooks {
    * Implements hook_entity_operation().
    */
   #[Hook('entity_operation')]
-  public function entityOperation(EntityInterface $term): array {
+  public function entityOperation(EntityInterface $term) {
     $operations = [];
     if ($term instanceof Term && $term->access('create')) {
       $operations['add-child'] = [

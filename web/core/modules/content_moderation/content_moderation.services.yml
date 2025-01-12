@@ -1,6 +1,3 @@
-parameters:
-  content_moderation.hooks_converted: true
-
 services:
   _defaults:
     autoconfigure: true

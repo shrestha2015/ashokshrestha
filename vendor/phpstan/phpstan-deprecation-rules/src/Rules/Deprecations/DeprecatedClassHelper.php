@@ -10,7 +10,8 @@ use function sprintf;
 class DeprecatedClassHelper
 {
 
-	private ReflectionProvider $reflectionProvider;
+	/** @var ReflectionProvider */
+	private $reflectionProvider;
 
 	public function __construct(ReflectionProvider $reflectionProvider)
 	{

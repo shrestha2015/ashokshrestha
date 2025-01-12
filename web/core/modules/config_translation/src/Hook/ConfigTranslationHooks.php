@@ -78,7 +78,7 @@ class ConfigTranslationHooks {
    * Implements hook_themes_installed().
    */
   #[Hook('themes_installed')]
-  public function themesInstalled(): void {
+  public function themesInstalled() {
     // Themes can provide *.config_translation.yml declarations.
     // @todo Make ThemeHandler trigger an event instead and make
     //   ConfigMapperManager plugin manager subscribe to it.
@@ -90,7 +90,7 @@ class ConfigTranslationHooks {
    * Implements hook_themes_uninstalled().
    */
   #[Hook('themes_uninstalled')]
-  public function themesUninstalled(): void {
+  public function themesUninstalled() {
     // Themes can provide *.config_translation.yml declarations.
     // @todo Make ThemeHandler trigger an event instead and make
     //   ConfigMapperManager plugin manager subscribe to it.
@@ -129,7 +129,7 @@ class ConfigTranslationHooks {
    * Implements hook_config_translation_info().
    */
   #[Hook('config_translation_info')]
-  public function configTranslationInfo(&$info): void {
+  public function configTranslationInfo(&$info) {
     $entity_type_manager = \Drupal::entityTypeManager();
     // If field UI is not enabled, the base routes of the type
     // "entity.field_config.{$entity_type}_field_edit_form" are not defined.
@@ -176,7 +176,7 @@ class ConfigTranslationHooks {
    * Implements hook_entity_operation().
    */
   #[Hook('entity_operation')]
-  public function entityOperation(EntityInterface $entity): array {
+  public function entityOperation(EntityInterface $entity) {
     $operations = [];
     $entity_type = $entity->getEntityType();
     if ($entity_type->entityClassImplements(ConfigEntityInterface::class) && $entity->hasLinkTemplate('config-translation-overview') && \Drupal::currentUser()->hasPermission('translate configuration')) {

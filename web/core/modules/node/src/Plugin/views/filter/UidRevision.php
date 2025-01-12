@@ -13,9 +13,6 @@ use Drupal\views\Attribute\ViewsFilter;
 #[ViewsFilter("node_uid_revision")]
 class UidRevision extends Name {
 
-  /**
-   * {@inheritdoc}
-   */
   public function query($group_by = FALSE) {
     $this->ensureMyTable();
 

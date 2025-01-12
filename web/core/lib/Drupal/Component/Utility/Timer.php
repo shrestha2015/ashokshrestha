@@ -9,11 +9,6 @@ namespace Drupal\Component\Utility;
  */
 class Timer {
 
-  /**
-   * An associative array of timers.
-   *
-   * @var array
-   */
   protected static $timers = [];
 
   /**

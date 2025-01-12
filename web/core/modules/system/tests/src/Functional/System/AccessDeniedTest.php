@@ -27,9 +27,6 @@ class AccessDeniedTest extends BrowserTestBase {
    */
   protected $defaultTheme = 'stark';
 
-  /**
-   * The test user.
-   */
   protected $adminUser;
 
   /**

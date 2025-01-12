@@ -186,11 +186,9 @@ class StatementTest extends DatabaseTestBase {
 
     $count = 0;
 
-    // phpcs:ignore DrupalPractice.CodeAnalysis.VariableAnalysis
     foreach ($statement as $row) {
       $count++;
     }
-    // phpcs:ignore DrupalPractice.CodeAnalysis.VariableAnalysis
     foreach ($statement as $row) {
       $count++;
     }
@@ -211,7 +209,7 @@ class StatementTest extends DatabaseTestBase {
 
     $this->expectException(DatabaseExceptionWrapper::class);
     $this->expectExceptionMessage('Attempted rewinding a StatementInterface object when fetching has already started. Refactor your code to avoid rewinding statement objects.');
-    iterator_count($statement);
+    $rowCount = iterator_count($statement);
   }
 
   /**

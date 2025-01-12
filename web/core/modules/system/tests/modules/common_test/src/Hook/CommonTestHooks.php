@@ -54,7 +54,7 @@ class CommonTestHooks {
    * implementations are executed.
    */
   #[Hook('drupal_alter_foo_alter', module: 'block')]
-  public function blockDrupalAlterFooAlter(&$data, &$arg2 = NULL, &$arg3 = NULL): void {
+  public function blockDrupalAlterFooAlter(&$data, &$arg2 = NULL, &$arg3 = NULL) {
     $data['foo'] .= ' block';
   }
 
@@ -80,7 +80,7 @@ class CommonTestHooks {
    * Implements hook_library_info_build().
    */
   #[Hook('library_info_build')]
-  public function libraryInfoBuild(): array {
+  public function libraryInfoBuild() {
     $libraries = [];
     if (\Drupal::state()->get('common_test.library_info_build_test')) {
       $libraries['dynamic_library'] = ['version' => '1.0', 'css' => ['base' => ['common_test.css' => []]]];

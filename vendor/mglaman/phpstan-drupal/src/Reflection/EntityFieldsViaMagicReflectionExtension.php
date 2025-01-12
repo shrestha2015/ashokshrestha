@@ -6,7 +6,7 @@ use LogicException;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\PropertiesClassReflectionExtension;
 use PHPStan\Reflection\PropertyReflection;
-use PHPStan\Type\IsSuperTypeOfResult;
+use PHPStan\TrinaryLogic;
 use PHPStan\Type\ObjectType;
 use function array_key_exists;
 
@@ -63,7 +63,7 @@ class EntityFieldsViaMagicReflectionExtension implements PropertiesClassReflecti
         throw new LogicException($classReflection->getName() . "::$propertyName should be handled earlier.");
     }
 
-    public static function classObjectIsSuperOfInterface(string $name, ObjectType $interfaceObject) : IsSuperTypeOfResult
+    public static function classObjectIsSuperOfInterface(string $name, ObjectType $interfaceObject) : TrinaryLogic
     {
         return $interfaceObject->isSuperTypeOf(new ObjectType($name));
     }

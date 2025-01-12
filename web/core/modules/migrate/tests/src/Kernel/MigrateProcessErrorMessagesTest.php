@@ -32,21 +32,21 @@ class MigrateProcessErrorMessagesTest extends MigrateTestBase {
   ];
 
   /**
-   * A mock Process Plugin Manager.
+   * A prophesized Process Plugin Manager.
    *
    * @var \Prophecy\Prophecy\ObjectProphecy
    */
   protected ObjectProphecy $processPluginManager;
 
   /**
-   * A mock ID Map Plugin Manager.
+   * A prophesized ID Map Plugin Manager.
    *
    * @var \Prophecy\Prophecy\ObjectProphecy
    */
   protected ObjectProphecy $idMapPluginManager;
 
   /**
-   * A mock ID Map.
+   * A prophesized ID Map.
    *
    * @var \Prophecy\Prophecy\ObjectProphecy
    */

@@ -43,21 +43,9 @@ class ImageModuleTestHooks {
    * Implements hook_image_style_flush().
    */
   #[Hook('image_style_flush')]
-  public function imageStyleFlush($style, $path = NULL): void {
+  public function imageStyleFlush($style, $path = NULL) {
     $state = \Drupal::state();
     $state->set('image_module_test_image_style_flush.called', $path);
-  }
-
-  /**
-   * Implements hook_file_download().
-   */
-  #[Hook('file_download')]
-  public function fileDownload($uri): array {
-    $default_uri = \Drupal::keyValue('image')->get('test_file_download', FALSE);
-    if ($default_uri == $uri) {
-      return ['X-Image-Owned-By' => 'image_module_test'];
-    }
-    return [];
   }
 
 }

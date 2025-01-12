@@ -185,7 +185,6 @@ interface FormBuilderInterface {
    *   array.
    *
    * @return mixed|\Symfony\Component\HttpFoundation\Response
-   *   The form array or a response object.
    */
   public function retrieveForm($form_id, FormStateInterface &$form_state);
 
@@ -206,7 +205,6 @@ interface FormBuilderInterface {
    *   sanitized \Drupal::request()->request data, is also accumulated here.
    *
    * @return \Symfony\Component\HttpFoundation\RedirectResponse|null
-   *   The form response or NULL when the form was submitted programmatically.
    */
   public function processForm($form_id, &$form, FormStateInterface &$form_state);
 
@@ -320,7 +318,6 @@ interface FormBuilderInterface {
    *   as well as the sanitized \Drupal::request()->request data.
    *
    * @return array
-   *   The completely built form.
    */
   public function doBuildForm($form_id, &$element, FormStateInterface &$form_state);
 

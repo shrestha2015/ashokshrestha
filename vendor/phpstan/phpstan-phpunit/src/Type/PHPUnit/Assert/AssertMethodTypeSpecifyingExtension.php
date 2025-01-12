@@ -14,7 +14,8 @@ use PHPStan\Type\MethodTypeSpecifyingExtension;
 class AssertMethodTypeSpecifyingExtension implements MethodTypeSpecifyingExtension, TypeSpecifierAwareExtension
 {
 
-	private TypeSpecifier $typeSpecifier;
+	/** @var TypeSpecifier */
+	private $typeSpecifier;
 
 	public function setTypeSpecifier(TypeSpecifier $typeSpecifier): void
 	{
@@ -34,7 +35,7 @@ class AssertMethodTypeSpecifyingExtension implements MethodTypeSpecifyingExtensi
 	{
 		return AssertTypeSpecifyingExtensionHelper::isSupported(
 			$methodReflection->getName(),
-			$node->getArgs(),
+			$node->getArgs()
 		);
 	}
 
@@ -49,7 +50,7 @@ class AssertMethodTypeSpecifyingExtension implements MethodTypeSpecifyingExtensi
 			$this->typeSpecifier,
 			$scope,
 			$functionReflection->getName(),
-			$node->getArgs(),
+			$node->getArgs()
 		);
 	}
 

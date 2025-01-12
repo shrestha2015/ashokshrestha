@@ -18,11 +18,12 @@ class LanguageConfiguration extends FormElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#input' => TRUE,
       '#tree' => TRUE,
       '#process' => [
-        [static::class, 'processLanguageConfiguration'],
+        [$class, 'processLanguageConfiguration'],
       ],
     ];
   }

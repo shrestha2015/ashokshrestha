@@ -33,11 +33,10 @@ class Language extends TypedData {
   protected $language;
 
   /**
-   * {@inheritdoc}
+   * Overrides TypedData::getValue().
    *
    * @return \Drupal\Core\Language\LanguageInterface|null
    */
-  // phpcs:ignore Drupal.Commenting.FunctionComment.MissingReturnComment
   public function getValue() {
     if (!isset($this->language) && $this->id) {
       $this->language = \Drupal::languageManager()->getLanguage($this->id);

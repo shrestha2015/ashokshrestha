@@ -290,9 +290,6 @@ class Sql extends QueryPluginBase {
     ];
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function defineOptions() {
     $options = parent::defineOptions();
     $options['disable_sql_rewrite'] = [
@@ -385,16 +382,16 @@ class Sql extends QueryPluginBase {
    * 'node_content_parent' instead, thus allowing all properties of
    * both nodes to be available in the query.
    *
-   * @param string $alias
+   * @param $alias
    *   What this relationship will be called, and is also the alias
    *   for the table.
    * @param \Drupal\views\Plugin\views\join\JoinPluginBase $join
    *   A Join object (or derived object) to join the alias in.
-   * @param string $base
+   * @param $base
    *   The name of the 'base' table this relationship represents; this
    *   tells the join search which path to attempt to use when finding
    *   the path to this relationship.
-   * @param string|null $link_point
+   * @param $link_point
    *   If this relationship links to something other than the primary
    *   table, specify that table here. For example, a 'track' node
    *   might have a relationship to an 'album' node, which might
@@ -451,10 +448,10 @@ class Sql extends QueryPluginBase {
    * table is valid and exists; if you do not wish for this testing to
    * occur, use $query->queueTable() instead.
    *
-   * @param string $table
+   * @param $table
    *   The name of the table to add. It needs to exist in the global table
    *   array.
-   * @param string|null $relationship
+   * @param $relationship
    *   An alias of a table; if this is set, the path back to this table will
    *   be tested prior to adding the table, making sure that all intermediary
    *   tables exist and are properly aliased. If set to NULL the path to
@@ -465,7 +462,7 @@ class Sql extends QueryPluginBase {
    *   a different method; this is most likely to be used when tracing
    *   a hierarchy path. (node->parent->parent2->parent3). This parameter
    *   will specify how this table joins if it is not the default.
-   * @param string|null $alias
+   * @param $alias
    *   A specific alias to use, rather than the default alias.
    *
    * @return string
@@ -493,10 +490,10 @@ class Sql extends QueryPluginBase {
    * ensureTable() should be used instead of this one, unless you are
    * absolutely sure this is what you want.
    *
-   * @param string $table
+   * @param $table
    *   The name of the table to add. It needs to exist in the global table
    *   array.
-   * @param string|null $relationship
+   * @param $relationship
    *   The primary table alias this table is related to. If not set, the
    *   primary table will be used.
    * @param \Drupal\views\Plugin\views\join\JoinPluginBase $join
@@ -504,7 +501,7 @@ class Sql extends QueryPluginBase {
    *   a different method; this is most likely to be used when tracing
    *   a hierarchy path. (node->parent->parent2->parent3). This parameter
    *   will specify how this table joins if it is not the default.
-   * @param string|null $alias
+   * @param $alias
    *   A specific alias to use, rather than the default alias.
    *
    * @return string
@@ -576,9 +573,6 @@ class Sql extends QueryPluginBase {
     return $alias;
   }
 
-  /**
-   * Marks a relationship based table as included.
-   */
   protected function markTable($table, $relationship, $alias) {
     // Mark that this table has been added.
     if (empty($this->tables[$relationship][$table])) {
@@ -610,9 +604,9 @@ class Sql extends QueryPluginBase {
    * the table queue. It will ensure a path leads back to the relationship
    * table.
    *
-   * @param string $table
+   * @param $table
    *   The un-aliased name of the table to ensure.
-   * @param string|null $relationship
+   * @param $relationship
    *   The relationship to ensure the table links to. Each relationship will
    *   get a unique instance of the table being added. If not specified,
    *   will be the primary table.
@@ -801,9 +795,9 @@ class Sql extends QueryPluginBase {
   /**
    * Retrieve join data from the larger join data cache.
    *
-   * @param string $table
+   * @param $table
    *   The table to get the join information for.
-   * @param string $base_table
+   * @param $base_table
    *   The path we're following to get this join.
    *
    * @return \Drupal\views\Plugin\views\join\JoinPluginBase
@@ -844,17 +838,17 @@ class Sql extends QueryPluginBase {
    * This will automatically call ensureTable to make sure the required table
    * exists, *unless* $table is unset.
    *
-   * @param string $table
+   * @param $table
    *   The table this field is attached to. If NULL, it is assumed this will
    *   be a formula; otherwise, ensureTable is used to make sure the
    *   table exists.
-   * @param string $field
+   * @param $field
    *   The name of the field to add. This may be a real field or a formula.
-   * @param string $alias
+   * @param $alias
    *   The alias to create. If not specified, the alias will be $table_$field
    *   unless $table is NULL. When adding formulae, it is recommended that an
    *   alias be used.
-   * @param array $params
+   * @param $params
    *   An array of parameters additional to the field that will control items
    *   such as aggregation functions and DISTINCT. Some values that are
    *   recognized:
@@ -896,9 +890,9 @@ class Sql extends QueryPluginBase {
       'alias' => $alias,
     ] + $params;
 
-    // Test to see if the field is actually the same or not. Due to different
-    // parameters changing the aggregation function, we need to do some
-    // automatic alias collision detection:
+    // Test to see if the field is actually the same or not. Due to
+    // differing parameters changing the aggregation function, we need
+    // to do some automatic alias collision detection:
     $base = $alias;
     $counter = 0;
     while (!empty($this->fields[$alias]) && $this->fields[$alias] != $field_info) {
@@ -942,17 +936,17 @@ class Sql extends QueryPluginBase {
    * );
    * @endcode
    *
-   * @param string $group
+   * @param $group
    *   The WHERE group to add these to; groups are used to create AND/OR
    *   sections. Groups cannot be nested. Use 0 as the default group.
    *   If the group does not yet exist it will be created as an AND group.
-   * @param string $field
+   * @param $field
    *   The name of the field to check.
-   * @param string|null $value
+   * @param $value
    *   The value to test the field against. In most cases, this is a scalar. For more
    *   complex options, it is an array. The meaning of each element in the array is
    *   dependent on the $operator.
-   * @param string|null $operator
+   * @param $operator
    *   The comparison operator, such as =, <, or >=. It also accepts more
    *   complex options such as IN, LIKE, LIKE BINARY, or BETWEEN. Defaults to =.
    *   If $field is a string you have to use 'formula' here.
@@ -986,14 +980,14 @@ class Sql extends QueryPluginBase {
    * (TABLE.FIELD) and that the table already exists in the query.
    * Internally the dbtng method "where" is used.
    *
-   * @param string $group
+   * @param $group
    *   The WHERE group to add these to; groups are used to create AND/OR
    *   sections. Groups cannot be nested. Use 0 as the default group.
    *   If the group does not yet exist it will be created as an AND group.
-   * @param string $snippet
+   * @param $snippet
    *   The snippet to check. This can be either a column or
    *   a complex expression like "UPPER(table.field) = 'value'"
-   * @param array $args
+   * @param $args
    *   An associative array of arguments.
    *
    * @see QueryConditionInterface::where()
@@ -1024,14 +1018,14 @@ class Sql extends QueryPluginBase {
    * (TABLE.FIELD) and that the table and an appropriate GROUP BY already exist in the query.
    * Internally the dbtng method "having" is used.
    *
-   * @param string $group
+   * @param $group
    *   The HAVING group to add these to; groups are used to create AND/OR
    *   sections. Groups cannot be nested. Use 0 as the default group.
    *   If the group does not yet exist it will be created as an AND group.
-   * @param string $snippet
+   * @param $snippet
    *   The snippet to check. This can be either a column or
    *   a complex expression like "COUNT(table.field) > 3"
-   * @param array $args
+   * @param $args
    *   An associative array of arguments.
    *
    * @see QueryConditionInterface::having()
@@ -1059,20 +1053,20 @@ class Sql extends QueryPluginBase {
   /**
    * Add an ORDER BY clause to the query.
    *
-   * @param string $table
+   * @param $table
    *   The table this field is part of. If a formula, enter NULL.
    *   If you want to orderby random use "rand" as table and nothing else.
-   * @param string|null $field
+   * @param $field
    *   The field or formula to sort on. If already a field, enter NULL
    *   and put in the alias.
-   * @param string $order
+   * @param $order
    *   Either ASC or DESC.
-   * @param string $alias
+   * @param $alias
    *   The alias to add the field as. In SQL, all fields in the order by
    *   must also be in the SELECT portion. If an $alias isn't specified
    *   one will be generated for from the $field; however, if the
    *   $field is a formula, this alias will likely fail.
-   * @param array $params
+   * @param $params
    *   Any params that should be passed through to the addField.
    */
   public function addOrderBy($table, $field = NULL, $order = 'ASC', $alias = '', $params = []) {
@@ -1156,8 +1150,8 @@ class Sql extends QueryPluginBase {
    * There is other code in filters which makes sure that the group IDs are
    * higher than zero.
    *
-   * @param string $where
-   *   The type of clause, either 'where' or 'having'.
+   * @param $where
+   *   'where' or 'having'.
    */
   protected function buildCondition($where = 'where') {
     $has_condition = FALSE;
@@ -1325,7 +1319,7 @@ class Sql extends QueryPluginBase {
   /**
    * Generates a query and count query from all of the information supplied.
    *
-   * @param bool $get_count
+   * @param $get_count
    *   Provide a countQuery if this is true, otherwise provide a normal query.
    */
   public function query($get_count = FALSE) {
@@ -1763,16 +1757,10 @@ class Sql extends QueryPluginBase {
     return $entities;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function addSignature(ViewExecutable $view) {
     $view->query->addField(NULL, "'" . $view->storage->id() . ':' . $view->current_display . "'", 'view_name');
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function getAggregationInfo() {
     // @todo Need a way to get database specific and customized aggregation
     //   functions into here.
@@ -1854,16 +1842,10 @@ class Sql extends QueryPluginBase {
     ];
   }
 
-  /**
-   * Builds a simple SQL expression.
-   */
   public function aggregationMethodSimple($group_type, $field) {
     return strtoupper($group_type) . '(' . $field . ')';
   }
 
-  /**
-   * Builds a SQL expression using DISTINCT.
-   */
   public function aggregationMethodDistinct($group_type, $field) {
     $group_type = str_replace('_distinct', '', $group_type);
     return strtoupper($group_type) . '(DISTINCT ' . $field . ')';

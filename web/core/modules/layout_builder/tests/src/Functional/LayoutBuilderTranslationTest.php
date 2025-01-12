@@ -153,6 +153,7 @@ class LayoutBuilderTranslationTest extends ContentTranslationTestBase {
     ], $this->langcodes[0]);
     $storage = $this->container->get('entity_type.manager')
       ->getStorage($this->entityTypeId);
+    $storage->resetCache([$id]);
     $this->entity = $storage->load($id);
   }
 

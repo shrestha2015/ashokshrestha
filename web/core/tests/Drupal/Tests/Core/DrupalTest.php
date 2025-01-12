@@ -467,7 +467,7 @@ class DrupalTest extends UnitTestCase {
    *   The value to return from the mocked container get() method.
    */
   protected function setMockContainerService($service_name, $return = NULL): void {
-    $this->container->expects($this->once())
+    $expects = $this->container->expects($this->once())
       ->method('get')
       ->with($service_name)
       ->willReturn($return ?? new \stdClass());

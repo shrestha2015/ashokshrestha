@@ -17,9 +17,10 @@ class Toolbar extends RenderElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#pre_render' => [
-        [static::class, 'preRenderToolbar'],
+        [$class, 'preRenderToolbar'],
       ],
       '#theme' => 'toolbar',
       '#attached' => [

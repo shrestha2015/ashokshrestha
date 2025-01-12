@@ -88,20 +88,19 @@ class_alias(TranslatableMarkup::class, '\Drupal\Core\StringTranslation\Translati
  * @ingroup sanitization
  */
 function t($string, array $args = [], array $options = []) {
-  // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
   return new TranslatableMarkup($string, $args, $options);
 }
 
 /**
  * Provides custom PHP error handling.
  *
- * @param int $error_level
+ * @param $error_level
  *   The level of the error raised.
- * @param string $message
+ * @param $message
  *   The error message.
- * @param string $filename
+ * @param $filename
  *   (optional) The filename that the error was raised in.
- * @param int $line
+ * @param $line
  *   (optional) The line number the error was raised at.
  */
 function _drupal_error_handler($error_level, $message, $filename = NULL, $line = NULL) {
@@ -367,14 +366,14 @@ function drupal_maintenance_theme() {
  * }
  * @endcode
  *
- * @param string|null $name
+ * @param $name
  *   Globally unique name for the variable. For a function with only one static,
  *   variable, the function name (e.g. via the PHP magic __FUNCTION__ constant)
  *   is recommended. For a function with multiple static variables add a
  *   distinguishing suffix to the function name for each one.
- * @param mixed|null $default_value
+ * @param $default_value
  *   Optional default value.
- * @param bool $reset
+ * @param $reset
  *   TRUE to reset one or all variables(s). This parameter is only used
  *   internally and should not be passed in; use drupal_static_reset() instead.
  *   (This function's return value should not be used when TRUE is passed in.)
@@ -425,7 +424,7 @@ function &drupal_static($name, $default_value = NULL, $reset = FALSE) {
 /**
  * Resets one or all centrally stored static variable(s).
  *
- * @param string $name
+ * @param $name
  *   Name of the static variable to reset. Omit to reset all variables.
  *   Resetting all variables should only be used, for example, for running
  *   unit tests with a clean environment.
@@ -442,7 +441,7 @@ function drupal_static_reset($name = NULL) {
  *
  * @param callable $callback
  *   The shutdown function to register.
- * @param mixed ...$args
+ * @param ...$args
  *   Additional arguments to pass to the shutdown function.
  *
  * @return array

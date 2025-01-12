@@ -23,14 +23,16 @@ class ClassCoversExistsRule implements Rule
 	/**
 	 * Covers helper.
 	 *
+	 * @var CoversHelper
 	 */
-	private CoversHelper $coversHelper;
+	private $coversHelper;
 
 	/**
 	 * Reflection provider.
 	 *
+	 * @var ReflectionProvider
 	 */
-	private ReflectionProvider $reflectionProvider;
+	private $reflectionProvider;
 
 	public function __construct(
 		CoversHelper $coversHelper,
@@ -60,7 +62,7 @@ class ClassCoversExistsRule implements Rule
 		if (count($classCoversDefaultClasses) >= 2) {
 			return [
 				RuleErrorBuilder::message(sprintf(
-					'@coversDefaultClass is defined multiple times.',
+					'@coversDefaultClass is defined multiple times.'
 				))->identifier('phpunit.coversDuplicate')->build(),
 			];
 		}
@@ -73,7 +75,7 @@ class ClassCoversExistsRule implements Rule
 			if (!$this->reflectionProvider->hasClass($className)) {
 				$errors[] = RuleErrorBuilder::message(sprintf(
 					'@coversDefaultClass references an invalid class %s.',
-					$className,
+					$className
 				))->identifier('phpunit.coversClass')->build();
 			}
 		}
@@ -81,7 +83,7 @@ class ClassCoversExistsRule implements Rule
 		foreach ($classCovers as $covers) {
 			$errors = array_merge(
 				$errors,
-				$this->coversHelper->processCovers($node, $covers, null),
+				$this->coversHelper->processCovers($node, $covers, null)
 			);
 		}
 

@@ -441,7 +441,7 @@ abstract class ResourceTestBase extends BrowserTestBase {
     ksort($array);
 
     // Then check for child arrays.
-    foreach ($array as &$value) {
+    foreach ($array as $key => &$value) {
       if (is_array($value)) {
         static::recursiveKSort($value);
       }

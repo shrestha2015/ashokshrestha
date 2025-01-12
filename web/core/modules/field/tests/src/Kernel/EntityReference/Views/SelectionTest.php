@@ -60,7 +60,6 @@ class SelectionTest extends KernelTestBase {
     $this->installConfig(['entity_reference_test', 'filter']);
     $this->installEntitySchema('user');
     $this->installEntitySchema('node');
-    $this->installEntitySchema('entity_test');
 
     // Create test nodes.
     $type = $this->randomMachineName();

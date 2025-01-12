@@ -8,7 +8,6 @@ use Drupal\KernelTests\KernelTestBase;
 
 /**
  * Covers hook_requirements and hook_requirements_alter.
- *
  * @group Module
  */
 class RequirementsTest extends KernelTestBase {

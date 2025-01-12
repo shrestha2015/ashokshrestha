@@ -155,6 +155,7 @@ class NodeEditFormTest extends NodeTestBase {
     $this->drupalGet("node/" . $node->id() . "/edit");
     $edit = ['status[value]' => FALSE];
     $this->submitForm($edit, 'Save');
+    $this->nodeStorage->resetCache([$node->id()]);
     $node = $this->nodeStorage->load($node->id());
     $this->assertFalse($node->isPublished(), 'Node is unpublished');
   }
@@ -202,6 +203,7 @@ class NodeEditFormTest extends NodeTestBase {
     // Save the node without making any changes.
     $this->drupalGet('node/' . $node->id() . '/edit');
     $this->submitForm([], 'Save');
+    $this->nodeStorage->resetCache([$node->id()]);
     $node = $this->nodeStorage->load($node->id());
     $this->assertSame($this->webUser->id(), $node->getOwner()->id());
 
@@ -214,6 +216,7 @@ class NodeEditFormTest extends NodeTestBase {
     // author ID.
     $this->drupalGet('node/' . $node->id() . '/edit');
     $this->submitForm([], 'Save');
+    $this->nodeStorage->resetCache([$node->id()]);
     $node = $this->nodeStorage->load($node->id());
     $this->assertSame($this->webUser->id(), $node->getOwner()->id());
   }
@@ -277,6 +280,7 @@ class NodeEditFormTest extends NodeTestBase {
     $edit[$form_element_name] = '';
     $this->drupalGet('node/' . $node->id() . '/edit');
     $this->submitForm($edit, 'Save');
+    $this->nodeStorage->resetCache([$node->id()]);
     $node = $this->nodeStorage->load($node->id());
     $uid = $node->getOwnerId();
     // Most SQL database drivers stringify fetches but entities are not
@@ -295,6 +299,7 @@ class NodeEditFormTest extends NodeTestBase {
     // logged in).
     $edit[$form_element_name] = $this->webUser->getAccountName();
     $this->submitForm($edit, 'Save');
+    $this->nodeStorage->resetCache([$node->id()]);
     $node = $this->nodeStorage->load($node->id());
     $this->assertSame($this->webUser->id(), $node->getOwnerId(), 'Node authored by normal user.');
   }

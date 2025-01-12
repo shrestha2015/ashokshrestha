@@ -255,7 +255,7 @@ class FormTestDisabledElementsForm extends FormBase {
 
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Submit'),
+      '#value' => t('Submit'),
     ];
 
     return $form;

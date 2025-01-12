@@ -4,7 +4,6 @@ namespace Drupal\navigation;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Core\Block\BlockPluginInterface;
-use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\ContentEntityInterface;
@@ -19,7 +18,6 @@ use Drupal\Core\Menu\LocalTaskManagerInterface;
 use Drupal\Core\Plugin\Context\Context;
 use Drupal\Core\Plugin\Context\ContextDefinition;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Security\Attribute\TrustedCallback;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\layout_builder\SectionStorage\SectionStorageManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -102,20 +100,6 @@ final class NavigationRenderer {
    * @see hook_page_top()
    */
   public function buildNavigation(array &$page_top): void {
-    $page_top['navigation'] = [
-      '#cache' => [
-        'keys' => ['navigation', 'navigation'],
-        'max-age' => CacheBackendInterface::CACHE_PERMANENT,
-      ],
-      '#pre_render' => ['navigation.renderer:doBuildNavigation'],
-    ];
-  }
-
-  /**
-   * Pre-render callback for ::buildNavigation.
-   */
-  #[TrustedCallback]
-  public function doBuildNavigation($build): array {
     $logo_settings = $this->configFactory->get('navigation.settings');
     $logo_provider = $logo_settings->get('logo.provider');
 
@@ -125,6 +109,7 @@ final class NavigationRenderer {
     ];
     $storage = $this->sectionStorageManager->findByContext($contexts, $cacheability);
 
+    $build = [];
     if ($storage) {
       foreach ($storage->getSections() as $delta => $section) {
         $build[$delta] = $section->toRenderArray([]);
@@ -156,21 +141,20 @@ final class NavigationRenderer {
       ],
     ];
     $build[0] = NestedArray::mergeDeepArray([$build[0], $defaults]);
+    $page_top['navigation'] = $build;
 
     if ($logo_provider === self::LOGO_PROVIDER_CUSTOM) {
       $logo_path = $logo_settings->get('logo.path');
       if (!empty($logo_path) && is_file($logo_path)) {
         $logo_managed_url = $this->fileUrlGenerator->generateAbsoluteString($logo_path);
         $image = $this->imageFactory->get($logo_path);
-        $build[0]['settings']['logo_path'] = $logo_managed_url;
+        $page_top['navigation'][0]['settings']['logo_path'] = $logo_managed_url;
         if ($image->isValid()) {
-          $build[0]['settings']['logo_width'] = $image->getWidth();
-          $build[0]['settings']['logo_height'] = $image->getHeight();
+          $page_top['navigation'][0]['settings']['logo_width'] = $image->getWidth();
+          $page_top['navigation'][0]['settings']['logo_height'] = $image->getHeight();
         }
       }
     }
-    $build[0]['#cache']['contexts'] = ['user.permissions', 'theme', 'languages:language_interface'];
-    return $build;
   }
 
   /**

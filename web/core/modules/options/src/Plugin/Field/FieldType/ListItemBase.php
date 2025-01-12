@@ -336,7 +336,7 @@ abstract class ListItemBase extends FieldItemBase implements OptionsProviderInte
   /**
    * #element_validate callback for options field allowed values.
    *
-   * @param array $element
+   * @param $element
    *   An associative array containing the properties and children of the
    *   generic form element.
    * @param \Drupal\Core\Form\FormStateInterface $form_state
@@ -444,12 +444,10 @@ abstract class ListItemBase extends FieldItemBase implements OptionsProviderInte
    * @param string $option
    *   The option value entered by the user.
    *
-   * @return \Drupal\Core\StringTranslation\TranslatableMarkup|string|null
+   * @return string
    *   The error message if the specified value is invalid, NULL otherwise.
    */
-  protected static function validateAllowedValue($option) {
-    return NULL;
-  }
+  protected static function validateAllowedValue($option) {}
 
   /**
    * Generates a string representation of an array of 'allowed values'.

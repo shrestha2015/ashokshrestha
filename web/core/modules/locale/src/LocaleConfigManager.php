@@ -180,7 +180,6 @@ class LocaleConfigManager {
         if (isset($definition['translation context'])) {
           $options['context'] = $definition['translation context'];
         }
-        // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
         return new TranslatableMarkup($value, [], $options);
       }
     }

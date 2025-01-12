@@ -116,9 +116,9 @@ class ImageStyle extends ConfigEntityBase implements ImageStyleInterface, Entity
     parent::postSave($storage, $update);
 
     if ($update) {
-      if ($this->getOriginal() && ($this->id() !== $this->getOriginal()->id())) {
+      if (!empty($this->original) && $this->id() !== $this->original->id()) {
         // The old image style name needs flushing after a rename.
-        $this->getOriginal()->flush();
+        $this->original->flush();
         // Update field settings if necessary.
         if (!$this->isSyncing()) {
           static::replaceImageStyle($this);

@@ -53,11 +53,6 @@ class DateFormatter implements DateFormatterInterface {
    */
   protected $requestStack;
 
-  /**
-   * The available date formats.
-   *
-   * @var array
-   */
   protected $dateFormats = [];
 
   /**

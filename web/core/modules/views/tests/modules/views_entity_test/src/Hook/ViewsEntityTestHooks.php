@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\views_entity_test\Hook;
 
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -35,7 +34,7 @@ class ViewsEntityTestHooks {
    * @see \Drupal\system\Tests\Entity\FieldAccessTest::testFieldAccess()
    */
   #[Hook('entity_field_access')]
-  public function entityFieldAccess($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL): AccessResultInterface {
+  public function entityFieldAccess($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL) {
     if ($field_definition->getName() == 'test_text_access') {
       if ($items) {
         if ($items->value == 'no access value') {

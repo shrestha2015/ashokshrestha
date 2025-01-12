@@ -221,6 +221,8 @@ class Mapping extends ArrayElement {
    * @param \Drupal\Core\TypedData\MapDataDefinition $definition
    *   The config schema definition for a `type: mapping`.
    *
+   * @return void
+   *
    * @throws \LogicException
    *   Thrown when `requiredKey: true` is specified.
    */

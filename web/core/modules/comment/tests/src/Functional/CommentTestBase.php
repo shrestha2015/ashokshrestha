@@ -108,7 +108,7 @@ abstract class CommentTestBase extends BrowserTestBase {
    *   Comment body.
    * @param string $subject
    *   Comment subject.
-   * @param null|true|array $contact
+   * @param string $contact
    *   Set to NULL for no contact info, TRUE to ignore success checking, and
    *   array of values to set contact info.
    * @param string $field_name
@@ -183,6 +183,7 @@ abstract class CommentTestBase extends BrowserTestBase {
     }
 
     if (isset($match[1])) {
+      \Drupal::entityTypeManager()->getStorage('comment')->resetCache([$match[1]]);
       return Comment::load($match[1]);
     }
   }
@@ -326,9 +327,9 @@ abstract class CommentTestBase extends BrowserTestBase {
    *
    * @param string $name
    *   Name of variable.
-   * @param string|int $value
+   * @param string $value
    *   Value of variable.
-   * @param string|\Stringable $message
+   * @param string $message
    *   Status message to display.
    * @param string $field_name
    *   (optional) Field name through which the comment should be posted.

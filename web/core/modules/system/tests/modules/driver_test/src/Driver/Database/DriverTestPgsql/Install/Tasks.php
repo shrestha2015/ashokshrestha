@@ -15,7 +15,7 @@ class Tasks extends CoreTasks {
    * {@inheritdoc}
    */
   public function name() {
-    return $this->t('PostgreSQL by the driver_test module');
+    return t('PostgreSQL by the driver_test module');
   }
 
 }

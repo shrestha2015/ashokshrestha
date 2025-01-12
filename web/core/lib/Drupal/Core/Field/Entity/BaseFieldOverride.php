@@ -62,6 +62,11 @@ class BaseFieldOverride extends FieldConfigBase {
   protected $baseFieldDefinition;
 
   /**
+   * The original override.
+   */
+  public BaseFieldOverride $original;
+
+  /**
    * Creates a base field override object.
    *
    * @param \Drupal\Core\Field\BaseFieldDefinition $base_field_definition
@@ -177,7 +182,6 @@ class BaseFieldOverride extends FieldConfigBase {
    * Gets the base field definition.
    *
    * @return \Drupal\Core\Field\BaseFieldDefinition
-   *   An associative array of the base field definition.
    */
   protected function getBaseFieldDefinition() {
     if (!isset($this->baseFieldDefinition)) {
@@ -213,13 +217,13 @@ class BaseFieldOverride extends FieldConfigBase {
     }
     else {
       // Some updates are always disallowed.
-      if ($this->entity_type != $this->getOriginal()->entity_type) {
-        throw new FieldException("Cannot change the entity_type of an existing base field bundle override (entity type:{$this->entity_type}, bundle:{$this->getOriginal()->bundle}, field name: {$this->field_name})");
+      if ($this->entity_type != $this->original->entity_type) {
+        throw new FieldException("Cannot change the entity_type of an existing base field bundle override (entity type:{$this->entity_type}, bundle:{$this->original->bundle}, field name: {$this->field_name})");
       }
-      if ($this->bundle != $this->getOriginal()->bundle) {
-        throw new FieldException("Cannot change the bundle of an existing base field bundle override (entity type:{$this->entity_type}, bundle:{$this->getOriginal()->bundle}, field name: {$this->field_name})");
+      if ($this->bundle != $this->original->bundle) {
+        throw new FieldException("Cannot change the bundle of an existing base field bundle override (entity type:{$this->entity_type}, bundle:{$this->original->bundle}, field name: {$this->field_name})");
       }
-      $previous_definition = $this->getOriginal();
+      $previous_definition = $this->original;
     }
     // Notify the entity storage.
     $this->entityTypeManager()->getStorage($this->getTargetEntityTypeId())->onFieldDefinitionUpdate($this, $previous_definition);

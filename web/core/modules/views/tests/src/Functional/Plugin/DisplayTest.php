@@ -189,7 +189,7 @@ class DisplayTest extends ViewTestBase {
   }
 
   /**
-   * Tests the 'read more' validation.
+   * Tests the readmore validation.
    */
   public function testReadMoreNoDisplay(): void {
     $view = Views::getView('test_display_more');
@@ -215,7 +215,7 @@ class DisplayTest extends ViewTestBase {
   }
 
   /**
-   * Tests the 'read more' with custom URL.
+   * Tests the readmore with custom URL.
    */
   public function testReadMoreCustomURL(): void {
     /** @var \Drupal\Core\Render\RendererInterface $renderer */

@@ -7,8 +7,6 @@ use Drupal\Core\Entity\EntityViewBuilder;
 use Drupal\Core\Render\Element\Link;
 use Drupal\Core\Security\TrustedCallbackInterface;
 
-// cspell:ignore readmore
-
 /**
  * View builder handler for nodes.
  */
@@ -81,7 +79,7 @@ class NodeViewBuilder extends EntityViewBuilder implements TrustedCallbackInterf
    *   The language in which the node entity is being viewed.
    * @param bool $is_in_preview
    *   Whether the node is currently being previewed.
-   * @param int|string $revision_id
+   * @param $revision_id
    *   (optional) The identifier of the node revision to be loaded. If none
    *   is provided, the default revision will be loaded.
    *

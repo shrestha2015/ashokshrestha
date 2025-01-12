@@ -30,7 +30,7 @@ class FormTestInputForgeryForm extends FormBase implements TrustedCallbackInterf
     // For testing that a user can't submit a value not matching one of the
     // allowed options.
     $form['checkboxes'] = [
-      '#title' => $this->t('Checkboxes'),
+      '#title' => t('Checkboxes'),
       '#type' => 'checkboxes',
       '#options' => [
         'one' => 'One',
@@ -39,7 +39,7 @@ class FormTestInputForgeryForm extends FormBase implements TrustedCallbackInterf
     ];
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Submit'),
+      '#value' => t('Submit'),
     ];
     $form['#post_render'][] = [static::class, 'postRender'];
 

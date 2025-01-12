@@ -208,7 +208,7 @@ class ConfigTest extends ConfigEntityBase implements ConfigTestInterface {
   /**
    * Sets the protected property value.
    *
-   * @param string $value
+   * @param $value
    *   The value to set.
    *
    * @return $this
@@ -233,9 +233,9 @@ class ConfigTest extends ConfigEntityBase implements ConfigTestInterface {
   /**
    * Concatenates the two params and sets the protected property value.
    *
-   * @param string $value1
+   * @param $value1
    *   The first value to concatenate.
-   * @param string $value2
+   * @param $value2
    *   The second value to concatenate.
    *
    * @return $this
@@ -250,9 +250,9 @@ class ConfigTest extends ConfigEntityBase implements ConfigTestInterface {
   /**
    * Concatenates up to two params and sets the protected property value.
    *
-   * @param string $value1
+   * @param $value1
    *   The first value to concatenate.
-   * @param string $value2
+   * @param $value2
    *   (optional) The second value to concatenate. Defaults to ''.
    *
    * @return $this
@@ -267,7 +267,7 @@ class ConfigTest extends ConfigEntityBase implements ConfigTestInterface {
   /**
    * Appends to protected property.
    *
-   * @param mixed $value
+   * @param $value
    *   The value to append.
    *
    * @return $this
@@ -319,7 +319,7 @@ class ConfigTest extends ConfigEntityBase implements ConfigTestInterface {
   /**
    * Sets the array property.
    *
-   * @param array $value
+   * @param $value
    *   The value to set.
    *
    * @return $this

@@ -78,10 +78,6 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
    */
   // phpcs:ignore Drupal.NamingConventions.ValidVariableName.LowerCamelName, Drupal.Commenting.VariableComment.Missing
   public $field_alias = 'unknown';
-
-  /**
-   * An array of aliases.
-   */
   public $aliases = [];
 
   /**
@@ -182,7 +178,7 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
   /**
    * Add 'additional' fields to the query.
    *
-   * @param array $fields
+   * @param $fields
    *   An array of fields. The key is an identifier used to later find the
    *   field alias used. The value is either a string in which case it's
    *   assumed to be a field on this handler's table; or it's an array in the
@@ -480,9 +476,6 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
     return TRUE;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function defineOptions() {
     $options = parent::defineOptions();
 
@@ -1734,9 +1727,9 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
    *     '{{ arguments.bar.b.c }}' => 'value',
    *   ];
    *
-   * @param array $array
+   * @param $array
    *   An array of values.
-   * @param array $parent_keys
+   * @param $parent_keys
    *   An array of parent keys. This will represent the array depth.
    *
    * @return array
@@ -1812,9 +1805,6 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
     return $output;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function themeFunctions() {
     $themes = [];
     $hook = 'views_view_field';
@@ -1841,9 +1831,6 @@ abstract class FieldPluginBase extends HandlerBase implements FieldHandlerInterf
     return $themes;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function adminLabel($short = FALSE) {
     return $this->getField(parent::adminLabel($short));
   }

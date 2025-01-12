@@ -80,7 +80,6 @@ class SelectProfileForm extends FormBase {
       '#default_value' => 'standard',
     ];
     foreach (array_keys($names) as $profile_name) {
-      // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
       $form['profile'][$profile_name]['#description'] = isset($profiles[$profile_name]['description']) ? $this->t($profiles[$profile_name]['description']) : '';
     }
 

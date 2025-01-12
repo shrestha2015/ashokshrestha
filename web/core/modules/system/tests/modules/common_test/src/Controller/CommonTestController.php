@@ -6,7 +6,6 @@ namespace Drupal\common_test\Controller;
 
 use Drupal\Component\Utility\Html;
 use Drupal\Core\Extension\ExtensionList;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,8 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
  * Controller routines for common_test routes.
  */
 class CommonTestController {
-
-  use StringTranslationTrait;
 
   /**
    * Returns links to the current page, with and without query strings.
@@ -27,7 +24,7 @@ class CommonTestController {
     return [
       'no_query' => [
         '#type' => 'link',
-        '#title' => $this->t('Link with no query string'),
+        '#title' => t('Link with no query string'),
         '#url' => Url::fromRoute('<current>'),
         '#options' => [
           'set_active_class' => TRUE,
@@ -35,7 +32,7 @@ class CommonTestController {
       ],
       'with_query' => [
         '#type' => 'link',
-        '#title' => $this->t('Link with a query string'),
+        '#title' => t('Link with a query string'),
         '#url' => Url::fromRoute('<current>'),
         '#options' => [
           'query' => [
@@ -47,7 +44,7 @@ class CommonTestController {
       ],
       'with_query_reversed' => [
         '#type' => 'link',
-        '#title' => $this->t('Link with the same query string in reverse order'),
+        '#title' => t('Link with the same query string in reverse order'),
         '#url' => Url::fromRoute('<current>'),
         '#options' => [
           'query' => [

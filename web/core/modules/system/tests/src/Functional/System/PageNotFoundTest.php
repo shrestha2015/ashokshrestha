@@ -27,9 +27,6 @@ class PageNotFoundTest extends BrowserTestBase {
    */
   protected $defaultTheme = 'stark';
 
-  /**
-   * The test user.
-   */
   protected $adminUser;
 
   /**

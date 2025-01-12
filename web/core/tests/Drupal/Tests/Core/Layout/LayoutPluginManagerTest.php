@@ -358,9 +358,9 @@ EOS;
   }
 
   /**
-   * Test that modules and themes can alter the list of layouts.
-   *
    * @covers ::getLayoutOptions
+   *
+   * Test that modules and themes can alter the list of layouts.
    */
   public function testGetLayoutOptions(): void {
     $this->moduleHandler->alter(

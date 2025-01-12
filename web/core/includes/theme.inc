@@ -85,11 +85,11 @@ function _system_default_theme_features() {
 /**
  * Allows themes and/or theme engines to easily discover overridden templates.
  *
- * @param array $cache
+ * @param $cache
  *   The existing cache of theme hooks to test against.
- * @param string $extension
+ * @param $extension
  *   The extension that these templates will have.
- * @param string $path
+ * @param $path
  *   The path to search.
  */
 function drupal_find_theme_templates($cache, $extension, $path) {
@@ -199,9 +199,9 @@ function drupal_find_theme_templates($cache, $extension, $path) {
  * To only retrieve the default global theme setting, an empty string should be
  * given for $theme.
  *
- * @param string $setting_name
+ * @param $setting_name
  *   The name of the setting to be retrieved.
- * @param string $theme
+ * @param $theme
  *   The name of a given theme; defaults to the current theme.
  *
  * @return mixed
@@ -1246,12 +1246,12 @@ function template_preprocess_page(&$variables): void {
  * variables from within preprocess functions, when wanting to base the
  * additional suggestions or classes on the path of the current page.
  *
- * @param array $args
+ * @param $args
  *   An array of path arguments.
- * @param string $base
+ * @param $base
  *   A string identifying the base 'thing' from which more specific suggestions
  *   are derived. For example, 'page' or 'html'.
- * @param string $delimiter
+ * @param $delimiter
  *   The string used to delimit increasingly specific information. The default
  *   of '__' is appropriate for theme hook suggestions. '-' is appropriate for
  *   extra classes.
@@ -1462,8 +1462,7 @@ function template_preprocess_field_multiple_value_form(&$variables): void {
 
   if ($variables['multiple']) {
     $table_id = Html::getUniqueId($element['#field_name'] . '_values');
-    // Using table id allows handing nested content with the same field names.
-    $order_class = $table_id . '-delta-order';
+    $order_class = $element['#field_name'] . '-delta-order';
     $header_attributes = new Attribute(['class' => ['label']]);
     if (!empty($element['#required'])) {
       $header_attributes['class'][] = 'js-form-required';

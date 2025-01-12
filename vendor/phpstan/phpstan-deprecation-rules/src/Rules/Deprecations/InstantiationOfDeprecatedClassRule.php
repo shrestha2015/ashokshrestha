@@ -21,11 +21,14 @@ use function sprintf;
 class InstantiationOfDeprecatedClassRule implements Rule
 {
 
-	private ReflectionProvider $reflectionProvider;
+	/** @var ReflectionProvider */
+	private $reflectionProvider;
 
-	private RuleLevelHelper $ruleLevelHelper;
+	/** @var RuleLevelHelper */
+	private $ruleLevelHelper;
 
-	private DeprecatedScopeHelper $deprecatedScopeHelper;
+	/** @var DeprecatedScopeHelper */
+	private $deprecatedScopeHelper;
 
 	public function __construct(ReflectionProvider $reflectionProvider, RuleLevelHelper $ruleLevelHelper, DeprecatedScopeHelper $deprecatedScopeHelper)
 	{
@@ -60,7 +63,9 @@ class InstantiationOfDeprecatedClassRule implements Rule
 				$scope,
 				$node->class,
 				'', // We don't care about the error message
-				static fn (): bool => true,
+				static function (): bool {
+					return true;
+				}
 			);
 
 			if ($classTypeResult->getType() instanceof ErrorType) {
@@ -87,13 +92,13 @@ class InstantiationOfDeprecatedClassRule implements Rule
 			if ($description === null) {
 				$errors[] = RuleErrorBuilder::message(sprintf(
 					'Instantiation of deprecated class %s.',
-					$referencedClass,
+					$referencedClass
 				))->identifier('new.deprecated')->build();
 			} else {
 				$errors[] = RuleErrorBuilder::message(sprintf(
 					"Instantiation of deprecated class %s:\n%s",
 					$referencedClass,
-					$description,
+					$description
 				))->identifier('new.deprecated')->build();
 			}
 		}

@@ -246,7 +246,7 @@ interface WorkflowTypeInterface extends PluginWithFormsInterface, DerivativeInsp
   /**
    * Gets the transitions for a state for the provided direction.
    *
-   * @param string $state_id
+   * @param $state_id
    *   The state to get transitions for.
    * @param string $direction
    *   (optional) The direction of the transition, defaults to

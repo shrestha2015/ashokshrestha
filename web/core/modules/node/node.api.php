@@ -74,8 +74,7 @@ use Drupal\Component\Utility\Xss;
  * @see node_access_rebuild()
  * @ingroup node_access
  */
-function hook_node_grants(AccountInterface $account, $operation): array {
-  $grants = [];
+function hook_node_grants(AccountInterface $account, $operation) {
   if ($account->hasPermission('access private content')) {
     $grants['example'] = [1];
   }
@@ -144,17 +143,17 @@ function hook_node_grants(AccountInterface $account, $operation): array {
  * @param \Drupal\node\NodeInterface $node
  *   The node that has just been saved.
  *
- * @return array
+ * @return array|null
  *   An array of grants as defined above.
  *
  * @see hook_node_access_records_alter()
  * @ingroup node_access
  */
-function hook_node_access_records(NodeInterface $node): array {
-  $grants = [];
+function hook_node_access_records(NodeInterface $node) {
   // We only care about the node if it has been marked private. If not, it is
   // treated just like any other node and we completely ignore it.
   if ($node->private->value) {
+    $grants = [];
     // Only published Catalan translations of private nodes should be viewable
     // to all users. If we fail to check $node->isPublished(), all users would be able
     // to view an unpublished node.
@@ -182,8 +181,9 @@ function hook_node_access_records(NodeInterface $node): array {
         'langcode' => 'ca',
       ];
     }
+
+    return $grants;
   }
-  return $grants;
 }
 
 /**
@@ -301,7 +301,7 @@ function hook_node_grants_alter(&$grants, AccountInterface $account, $operation)
  *
  * @ingroup entity_crud
  */
-function hook_node_search_result(NodeInterface $node): array {
+function hook_node_search_result(NodeInterface $node) {
   $rating = \Drupal::database()->query('SELECT SUM([points]) FROM {my_rating} WHERE [nid] = :nid', ['nid' => $node->id()])->fetchField();
   return ['rating' => \Drupal::translation()->formatPlural($rating, '1 point', '@count points')];
 }
@@ -372,11 +372,10 @@ function hook_node_update_index(NodeInterface $node) {
  *
  * @ingroup entity_crud
  */
-function hook_ranking(): array {
-  $data = [];
+function hook_ranking() {
   // If voting is disabled, we can avoid returning the array, no hard feelings.
   if (\Drupal::config('vote.settings')->get('node_enabled')) {
-    $data += [
+    return [
       'vote_average' => [
         'title' => t('Average vote'),
         // Note that we use i.sid, the search index's search item id, rather than
@@ -395,7 +394,6 @@ function hook_ranking(): array {
       ],
     ];
   }
-  return $data;
 }
 
 /**

@@ -17,20 +17,23 @@ class DataProviderDeclarationRule implements Rule
 	/**
 	 * Data provider helper.
 	 *
+	 * @var DataProviderHelper
 	 */
-	private DataProviderHelper $dataProviderHelper;
+	private $dataProviderHelper;
 
 	/**
 	 * When set to true, it reports data provider method with incorrect name case.
 	 *
+	 * @var bool
 	 */
-	private bool $checkFunctionNameCase;
+	private $checkFunctionNameCase;
 
 	/**
 	 * When phpstan-deprecation-rules is installed, it reports deprecated usages.
 	 *
+	 * @var bool
 	 */
-	private bool $deprecationRulesInstalled;
+	private $deprecationRulesInstalled;
 
 	public function __construct(
 		DataProviderHelper $dataProviderHelper,
@@ -67,8 +70,8 @@ class DataProviderDeclarationRule implements Rule
 					$dataProviderMethodName,
 					$lineNumber,
 					$this->checkFunctionNameCase,
-					$this->deprecationRulesInstalled,
-				),
+					$this->deprecationRulesInstalled
+				)
 			);
 		}
 

@@ -55,6 +55,7 @@ class TaxonomyFieldAllTermsTest extends TaxonomyTestBase {
    * Tests token replacement in the "all terms" field handler.
    */
   public function testViewsHandlerAllTermsWithTokens(): void {
+    $view = Views::getView('taxonomy_all_terms_test');
     $this->drupalGet('taxonomy_all_terms_token_test');
 
     // Term itself: {{ term_node_tid }}

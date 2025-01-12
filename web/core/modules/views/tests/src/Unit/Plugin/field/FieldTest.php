@@ -720,7 +720,7 @@ class FieldTest extends UnitTestCase {
    *
    * @param \Drupal\views\Plugin\views\field\EntityField $handler
    *   The field handler.
-   * @param array $definition
+   * @param $definition
    *   An array with entity type definition data.
    */
   protected function setupLanguageRenderer(EntityField $handler, $definition): void {

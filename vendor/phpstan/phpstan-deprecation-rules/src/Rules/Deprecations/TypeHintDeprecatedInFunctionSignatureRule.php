@@ -5,6 +5,7 @@ namespace PHPStan\Rules\Deprecations;
 use PhpParser\Node;
 use PHPStan\Analyser\Scope;
 use PHPStan\Node\InFunctionNode;
+use PHPStan\Reflection\ParametersAcceptorSelector;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
 use PHPStan\ShouldNotHappenException;
@@ -17,9 +18,11 @@ use function strtolower;
 class TypeHintDeprecatedInFunctionSignatureRule implements Rule
 {
 
-	private DeprecatedClassHelper $deprecatedClassHelper;
+	/** @var DeprecatedClassHelper */
+	private $deprecatedClassHelper;
 
-	private DeprecatedScopeHelper $deprecatedScopeHelper;
+	/** @var DeprecatedScopeHelper */
+	private $deprecatedScopeHelper;
 
 	public function __construct(DeprecatedClassHelper $deprecatedClassHelper, DeprecatedScopeHelper $deprecatedScopeHelper)
 	{
@@ -42,9 +45,10 @@ class TypeHintDeprecatedInFunctionSignatureRule implements Rule
 		if ($function === null) {
 			throw new ShouldNotHappenException();
 		}
+		$functionSignature = ParametersAcceptorSelector::selectSingle($function->getVariants());
 
 		$errors = [];
-		foreach ($function->getParameters() as $parameter) {
+		foreach ($functionSignature->getParameters() as $parameter) {
 			$deprecatedClasses = $this->deprecatedClassHelper->filterDeprecatedClasses($parameter->getType()->getReferencedClasses());
 			foreach ($deprecatedClasses as $deprecatedClass) {
 				$errors[] = RuleErrorBuilder::message(sprintf(
@@ -53,19 +57,19 @@ class TypeHintDeprecatedInFunctionSignatureRule implements Rule
 					$function->getName(),
 					strtolower($deprecatedClass->getClassTypeDescription()),
 					$deprecatedClass->getName(),
-					$this->deprecatedClassHelper->getClassDeprecationDescription($deprecatedClass),
+					$this->deprecatedClassHelper->getClassDeprecationDescription($deprecatedClass)
 				))->identifier(sprintf('parameter.deprecated%s', $deprecatedClass->getClassTypeDescription()))->build();
 			}
 		}
 
-		$deprecatedClasses = $this->deprecatedClassHelper->filterDeprecatedClasses($function->getReturnType()->getReferencedClasses());
+		$deprecatedClasses = $this->deprecatedClassHelper->filterDeprecatedClasses($functionSignature->getReturnType()->getReferencedClasses());
 		foreach ($deprecatedClasses as $deprecatedClass) {
 			$errors[] = RuleErrorBuilder::message(sprintf(
 				'Return type of function %s() has typehint with deprecated %s %s%s',
 				$function->getName(),
 				strtolower($deprecatedClass->getClassTypeDescription()),
 				$deprecatedClass->getName(),
-				$this->deprecatedClassHelper->getClassDeprecationDescription($deprecatedClass),
+				$this->deprecatedClassHelper->getClassDeprecationDescription($deprecatedClass)
 			))->identifier(sprintf('return.deprecated%s', $deprecatedClass->getClassTypeDescription()))->build();
 		}
 

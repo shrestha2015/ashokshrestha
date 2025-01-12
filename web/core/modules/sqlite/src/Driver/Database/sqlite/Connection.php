@@ -347,9 +347,6 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
     return preg_match('/^' . $pattern . '$/', $subject);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function queryRange($query, $from, $count, array $args = [], array $options = []) {
     return $this->query($query . ' LIMIT ' . (int) $from . ', ' . (int) $count, $args, $options);
   }
@@ -370,16 +367,10 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
     return 'temp.' . $tablename;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function driver() {
     return 'sqlite';
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function databaseType() {
     return 'sqlite';
   }
@@ -400,9 +391,6 @@ class Connection extends DatabaseConnection implements SupportsTemporaryTablesIn
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function mapConditionOperator($operator) {
     return static::$sqliteConditionOperatorMap[$operator] ?? NULL;
   }

@@ -21,25 +21,9 @@ use Drupal\views\ViewExecutable;
   help: new TranslatableMarkup('Defines a query test plugin.')
 )]
 class QueryTest extends QueryPluginBase {
-
-  /**
-   * The conditions to apply to the query.
-   */
   protected $conditions = [];
-
-  /**
-   * The list of fields.
-   */
   protected $fields = [];
-
-  /**
-   * An array of stdClasses.
-   */
   protected $allItems = [];
-
-  /**
-   * The field to order and the direction.
-   */
   protected $orderBy = [];
 
   /**
@@ -75,9 +59,6 @@ class QueryTest extends QueryPluginBase {
     $this->allItems = $allItems;
   }
 
-  /**
-   * Adds a simple WHERE clause to the query.
-   */
   public function addWhere($group, $field, $value = NULL, $operator = NULL) {
     $this->conditions[] = [
       'field' => $field,
@@ -87,24 +68,15 @@ class QueryTest extends QueryPluginBase {
 
   }
 
-  /**
-   * Adds a new field to a table.
-   */
   public function addField($table, $field, $alias = '', $params = []) {
     $this->fields[$field] = $field;
     return $field;
   }
 
-  /**
-   * Adds an ORDER BY clause to the query.
-   */
   public function addOrderBy($table, $field = NULL, $order = 'ASC', $alias = '', $params = []) {
     $this->orderBy = ['field' => $field, 'order' => $order];
   }
 
-  /**
-   * Ensures a table exists in the queue.
-   */
   public function ensureTable($table, $relationship = NULL, ?JoinPluginBase $join = NULL) {
     // There is no concept of joins.
   }

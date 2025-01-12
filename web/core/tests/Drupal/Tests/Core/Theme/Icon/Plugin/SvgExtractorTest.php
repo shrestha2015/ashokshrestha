@@ -129,7 +129,7 @@ class SvgExtractorTest extends UnitTestCase {
     }
 
     $expected_result = [];
-    foreach ($files as $icon) {
+    foreach ($files as $index => $icon) {
       $expected_id = $this->pluginId . IconDefinition::ICON_SEPARATOR . $icon['icon_id'];
       $expected_result[$expected_id] = [
         'source' => $icon['source'],

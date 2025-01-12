@@ -6,7 +6,6 @@ use PhpParser\Node;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ExtendedMethodReflection;
 use PHPStan\Rules\Rule;
-use PHPStan\Rules\RuleErrorBuilder;
 
 /**
  * @implements Rule<Node\Expr\StaticCall>
@@ -72,9 +71,8 @@ class GlobalDrupalDependencyInjectionRule implements Rule
             return [];
         }
 
-        return
-            [RuleErrorBuilder::message('\Drupal calls should be avoided in classes, use dependency injection instead')
-             ->identifier('globalDrupalDependencyInjection.useDependencyInjection')
-             ->build()];
+        return [
+            '\Drupal calls should be avoided in classes, use dependency injection instead'
+        ];
     }
 }

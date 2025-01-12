@@ -143,10 +143,7 @@ class HookCollectorPass implements CompilerPassInterface {
     $module_preg = '/^(?<function>(?<module>' . implode('|', $modules) . ')_(?!preprocess_)(?!update_\d)(?<hook>[a-zA-Z0-9_\x80-\xff]+$))/';
     $collector = new static();
     foreach ($module_filenames as $module => $info) {
-      $skip_procedural = FALSE;
-      if ($container?->hasParameter("$module.hooks_converted")) {
-        $skip_procedural = $container->getParameter("$module.hooks_converted");
-      }
+      $skip_procedural = isset($container) ? $container->hasParameter("$module.hooks_converted") : FALSE;
       $collector->collectModuleHookImplementations(dirname($info['pathname']), $module, $module_preg, $skip_procedural);
     }
     return $collector;
@@ -164,6 +161,8 @@ class HookCollectorPass implements CompilerPassInterface {
    *   matched first.
    * @param $skip_procedural
    *   Skip the procedural check for the current module.
+   *
+   * @return void
    */
   protected function collectModuleHookImplementations($dir, $module, $module_preg, bool $skip_procedural): void {
     $hook_file_cache = FileCacheFactory::get('hook_implementations');
@@ -302,8 +301,10 @@ class HookCollectorPass implements CompilerPassInterface {
    *   The class in which said attribute resides in.
    * @param $module
    *   The module in which the class resides in.
+   *
+   * @return void
    */
-  protected function addFromAttribute(Hook $hook, $class, $module): void {
+  protected function addFromAttribute(Hook $hook, $class, $module) {
     if ($hook->module) {
       $module = $hook->module;
     }
@@ -322,8 +323,10 @@ class HookCollectorPass implements CompilerPassInterface {
    *   The name of the module. (Truly shocking!)
    * @param string $function
    *   The name of function implementing the hook. (Wow!)
+   *
+   * @return void
    */
-  protected function addProceduralImplementation(\SplFileInfo $fileinfo, string $hook, string $module, string $function): void {
+  protected function addProceduralImplementation(\SplFileInfo $fileinfo, string $hook, string $module, string $function) {
     $this->addFromAttribute(new Hook($hook, $module . '_' . $hook), ProceduralCall::class, $module);
     if ($hook === 'hook_info') {
       $this->hookInfo[] = $function;
@@ -363,6 +366,8 @@ class HookCollectorPass implements CompilerPassInterface {
    *   The hook to check.
    * @param string $class
    *   The class the hook is implemented on.
+   *
+   * @return void
    */
   public static function checkForProceduralOnlyHooks(Hook $hook, string $class): void {
     $staticDenyHooks = [

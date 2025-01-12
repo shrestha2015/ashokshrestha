@@ -220,7 +220,7 @@ class ImageHooks {
    * Implements hook_file_move().
    */
   #[Hook('file_move')]
-  public function fileMove(FileInterface $file, FileInterface $source): void {
+  public function fileMove(FileInterface $file, FileInterface $source) {
     // Delete any image derivatives at the original image path.
     image_path_flush($source->getFileUri());
   }
@@ -255,7 +255,7 @@ class ImageHooks {
     }
     $uuid = $default_image['uuid'];
     if ($uuid) {
-      $original_uuid = $entity->getOriginal()?->getSetting('default_image')['uuid'];
+      $original_uuid = isset($entity->original) ? $entity->original->getSetting('default_image')['uuid'] : NULL;
       if ($uuid != $original_uuid) {
         $file = \Drupal::service('entity.repository')->loadEntityByUuid('file', $uuid);
         if ($file) {
@@ -282,7 +282,7 @@ class ImageHooks {
       // Only act on image fields.
       return;
     }
-    $prior_field_storage = $field_storage->getOriginal();
+    $prior_field_storage = $field_storage->original;
     // The value of a managed_file element can be an array if #extended == TRUE.
     $uuid_new = $field_storage->getSetting('default_image')['uuid'];
     $uuid_old = $prior_field_storage->getSetting('default_image')['uuid'];
@@ -317,7 +317,7 @@ class ImageHooks {
       // Only act on image fields.
       return;
     }
-    $prior_instance = $field->getOriginal();
+    $prior_instance = $field->original;
     $uuid_new = $field->getSetting('default_image')['uuid'];
     $uuid_old = $prior_instance->getSetting('default_image')['uuid'];
     // If the old and new files do not match, update the default accordingly.

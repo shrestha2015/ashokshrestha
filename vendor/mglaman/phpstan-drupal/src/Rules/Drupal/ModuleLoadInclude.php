@@ -52,9 +52,8 @@ class ModuleLoadInclude extends LoadIncludeBase
                         $filename,
                         $moduleName
                     ))
-                    ->line($node->getStartLine())
-                    ->identifier('moduleLoadInclude.moduleNotFound')
-                    ->build()
+                        ->line($node->getStartLine())
+                        ->build()
                 ];
             }
             $file = $module->getAbsolutePath() . DIRECTORY_SEPARATOR . $filename;
@@ -67,16 +66,14 @@ class ModuleLoadInclude extends LoadIncludeBase
                     'File %s could not be loaded from module_load_include.',
                     $module->getPath() . '/' . $filename
                 ))
-                ->line($node->getStartLine())
-                ->identifier('moduleLoadInclude.moduleNotLoadable')
-                ->build()
+                    ->line($node->getStartLine())
+                    ->build()
             ];
         } catch (Throwable $e) {
             return [
                 RuleErrorBuilder::message('A file could not be loaded from module_load_include')
-                ->line($node->getStartLine())
-                ->identifier('moduleLoadInclude.moduleNotLoadable')
-                ->build()
+                    ->line($node->getStartLine())
+                    ->build()
             ];
         }
     }

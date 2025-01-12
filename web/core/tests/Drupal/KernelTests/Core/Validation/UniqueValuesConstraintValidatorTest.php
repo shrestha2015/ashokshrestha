@@ -34,7 +34,6 @@ class UniqueValuesConstraintValidatorTest extends KernelTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
-    $this->installEntitySchema('user');
     $this->setUpCurrentUser();
     $this->installEntitySchema('entity_test_unique_constraint');
   }

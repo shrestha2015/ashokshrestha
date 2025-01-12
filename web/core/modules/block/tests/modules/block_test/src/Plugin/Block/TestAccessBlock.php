@@ -26,6 +26,7 @@ class TestAccessBlock extends BlockBase implements ContainerFactoryPluginInterfa
   /**
    * Tests the test access block.
    *
+   *
    * @param array $configuration
    *   The plugin configuration, i.e. an array with configuration values keyed
    *   by configuration option name. The special key 'context' may be used to

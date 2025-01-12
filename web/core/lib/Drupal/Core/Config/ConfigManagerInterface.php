@@ -97,7 +97,6 @@ interface ConfigManagerInterface {
    * store.
    *
    * @return \Drupal\Core\Config\Entity\ConfigDependencyManager
-   *   The configuration dependency manager.
    */
   public function getConfigDependencyManager();
 

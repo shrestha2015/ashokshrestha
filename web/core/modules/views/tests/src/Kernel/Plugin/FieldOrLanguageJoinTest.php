@@ -184,9 +184,9 @@ class FieldOrLanguageJoinTest extends RelationshipJoinTestBase {
    *
    * @param \Drupal\views\ViewExecutable $view
    *   The view used in this test.
-   * @param array $configuration
+   * @param $configuration
    *   The join plugin configuration.
-   * @param string $table_alias
+   * @param $table_alias
    *   The table alias to use for the join.
    *
    * @return array

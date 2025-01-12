@@ -44,7 +44,7 @@ class ViewsTestDataViewsHooks {
    * Implements hook_views_analyze().
    */
   #[Hook('views_analyze')]
-  public function viewsAnalyze(ViewExecutable $view): array {
+  public function viewsAnalyze(ViewExecutable $view) {
     \Drupal::state()->set('views_hook_test_views_analyze', TRUE);
     $ret = [];
     $ret[] = Analyzer::formatMessage(t('Test ok message'), 'ok');
@@ -57,7 +57,7 @@ class ViewsTestDataViewsHooks {
    * Implements hook_views_invalidate_cache().
    */
   #[Hook('views_invalidate_cache')]
-  public function viewsInvalidateCache(): void {
+  public function viewsInvalidateCache() {
     \Drupal::state()->set('views_hook_test_views_invalidate_cache', TRUE);
   }
 

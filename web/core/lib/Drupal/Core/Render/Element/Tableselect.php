@@ -58,6 +58,7 @@ class Tableselect extends Table {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#input' => TRUE,
       '#js_select' => TRUE,
@@ -65,11 +66,11 @@ class Tableselect extends Table {
       '#responsive' => TRUE,
       '#sticky' => FALSE,
       '#pre_render' => [
-        [static::class, 'preRenderTable'],
-        [static::class, 'preRenderTableselect'],
+        [$class, 'preRenderTable'],
+        [$class, 'preRenderTableselect'],
       ],
       '#process' => [
-        [static::class, 'processTableselect'],
+        [$class, 'processTableselect'],
       ],
       '#options' => [],
       '#empty' => '',

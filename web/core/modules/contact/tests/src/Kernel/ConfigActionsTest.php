@@ -18,11 +18,6 @@ class ConfigActionsTest extends KernelTestBase {
    */
   protected static $modules = ['contact', 'system', 'user'];
 
-  /**
-   * The configuration action manager.
-   *
-   * @var \Drupal\Core\Config\Action\ConfigActionManager
-   */
   private readonly ConfigActionManager $configActionManager;
 
   /**

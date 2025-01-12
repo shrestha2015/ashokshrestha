@@ -8,7 +8,6 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
-use Drupal\field_test\FieldTestHelper;
 
 /**
  * Bulk delete storages and fields, and clean up afterwards.
@@ -60,7 +59,7 @@ class BulkDeleteTest extends FieldKernelTestBase {
    *   Each entry is the value of the "$entity" parameter the hook is expected
    *   to have been passed.
    * @param array $actual_hooks
-   *   The array of actual hook invocations recorded by FieldTestHelper::memorize().
+   *   The array of actual hook invocations recorded by field_test_memorize().
    */
   public function checkHooksInvocations($expected_hooks, $actual_hooks): void {
     foreach ($expected_hooks as $hook => $invocations) {
@@ -326,7 +325,7 @@ class BulkDeleteTest extends FieldKernelTestBase {
    */
   public function testPurgeField(): void {
     // Start recording hook invocations.
-    FieldTestHelper::memorize();
+    field_test_memorize();
 
     $bundle = reset($this->bundles);
     $field_storage = reset($this->fieldStorages);
@@ -337,7 +336,7 @@ class BulkDeleteTest extends FieldKernelTestBase {
     $field->delete();
 
     // No field hooks were called.
-    $mem = FieldTestHelper::memorize();
+    $mem = field_test_memorize();
     $this->assertCount(0, $mem, 'No field hooks were called');
 
     $batch_size = 2;
@@ -357,7 +356,7 @@ class BulkDeleteTest extends FieldKernelTestBase {
     // Check hooks invocations.
     // FieldItemInterface::delete() should have been called once for each entity in the
     // bundle.
-    $actual_hooks = FieldTestHelper::memorize();
+    $actual_hooks = field_test_memorize();
     $hooks = [];
     $hooks['field_test_field_delete'] = $this->entitiesByBundles[$bundle];
     $this->checkHooksInvocations($hooks, $actual_hooks);
@@ -387,7 +386,7 @@ class BulkDeleteTest extends FieldKernelTestBase {
    */
   public function testPurgeFieldStorage(): void {
     // Start recording hook invocations.
-    FieldTestHelper::memorize();
+    field_test_memorize();
 
     $field_storage = reset($this->fieldStorages);
     $field_name = $field_storage->getName();
@@ -398,7 +397,7 @@ class BulkDeleteTest extends FieldKernelTestBase {
     $field->delete();
 
     // Assert that FieldItemInterface::delete() was not called yet.
-    $mem = FieldTestHelper::memorize();
+    $mem = field_test_memorize();
     $this->assertCount(0, $mem, 'No field hooks were called.');
 
     // Purge the data.
@@ -407,7 +406,7 @@ class BulkDeleteTest extends FieldKernelTestBase {
     // Check hooks invocations.
     // FieldItemInterface::delete() should have been called once for each entity in the
     // bundle.
-    $actual_hooks = FieldTestHelper::memorize();
+    $actual_hooks = field_test_memorize();
     $hooks = [];
     $hooks['field_test_field_delete'] = $this->entitiesByBundles[$bundle];
     $this->checkHooksInvocations($hooks, $actual_hooks);
@@ -434,14 +433,14 @@ class BulkDeleteTest extends FieldKernelTestBase {
     $field->delete();
 
     // Assert that FieldItemInterface::delete() was not called yet.
-    $mem = FieldTestHelper::memorize();
+    $mem = field_test_memorize();
     $this->assertCount(0, $mem, 'No field hooks were called.');
 
     // Purge the data.
     field_purge_batch(10);
 
     // Check hooks invocations (same as above, for the 2nd bundle).
-    $actual_hooks = FieldTestHelper::memorize();
+    $actual_hooks = field_test_memorize();
     $hooks = [];
     $hooks['field_test_field_delete'] = $this->entitiesByBundles[$bundle];
     $this->checkHooksInvocations($hooks, $actual_hooks);

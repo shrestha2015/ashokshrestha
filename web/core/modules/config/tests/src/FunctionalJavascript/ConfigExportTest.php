@@ -59,7 +59,7 @@ class ConfigExportTest extends WebDriverTestBase {
   /**
    * Creates test blocks.
    *
-   * @param string $title
+   * @param $title
    *   Title of the block.
    *
    * @return \Drupal\block_content\Entity\BlockContent

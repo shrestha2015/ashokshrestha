@@ -463,9 +463,6 @@ abstract class DisplayPluginBase extends PluginBase implements DisplayPluginInte
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function defineOptions() {
     $options = [
       'defaults' => [

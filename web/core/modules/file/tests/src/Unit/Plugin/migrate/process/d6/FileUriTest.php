@@ -15,9 +15,6 @@ use Drupal\Tests\migrate\Unit\MigrateTestCase;
  */
 class FileUriTest extends MigrateTestCase {
 
-  /**
-   * The plugin configuration.
-   */
   protected $migrationConfiguration = [
     'id' => 'test',
   ];

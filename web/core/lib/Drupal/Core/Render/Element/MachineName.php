@@ -76,6 +76,7 @@ class MachineName extends Textfield {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#input' => TRUE,
       '#default_value' => NULL,
@@ -84,15 +85,15 @@ class MachineName extends Textfield {
       '#size' => 60,
       '#autocomplete_route_name' => FALSE,
       '#process' => [
-        [static::class, 'processMachineName'],
-        [static::class, 'processAutocomplete'],
-        [static::class, 'processAjaxForm'],
+        [$class, 'processMachineName'],
+        [$class, 'processAutocomplete'],
+        [$class, 'processAjaxForm'],
       ],
       '#element_validate' => [
-        [static::class, 'validateMachineName'],
+        [$class, 'validateMachineName'],
       ],
       '#pre_render' => [
-        [static::class, 'preRenderTextfield'],
+        [$class, 'preRenderTextfield'],
       ],
       '#theme' => 'input__textfield',
       '#theme_wrappers' => ['form_element'],

@@ -19,9 +19,6 @@ use Symfony\Component\Validator\Constraint as SymfonyConstraint;
 )]
 class RestTestConstraint extends SymfonyConstraint {
 
-  /**
-   * The default violation message.
-   */
   public $message = 'REST test validation failed';
 
 }

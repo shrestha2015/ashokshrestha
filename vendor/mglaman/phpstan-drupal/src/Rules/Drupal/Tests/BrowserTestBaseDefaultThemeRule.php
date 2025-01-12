@@ -102,9 +102,7 @@ final class BrowserTestBaseDefaultThemeRule implements Rule
         if ($defaultTheme === null || $defaultTheme === '') {
             return [
                 RuleErrorBuilder::message('Drupal\Tests\BrowserTestBase::$defaultTheme is required. See https://www.drupal.org/node/3083055, which includes recommendations on which theme to use.')
-                    ->line($node->getStartLine())
-                    ->identifier('BrowserTestBase.defaultThemeRequired')
-                    ->build(),
+                    ->line($node->getStartLine())->build(),
             ];
         }
         return [];

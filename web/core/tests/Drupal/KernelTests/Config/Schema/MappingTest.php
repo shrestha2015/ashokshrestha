@@ -134,9 +134,7 @@ class MappingTest extends KernelTestBase {
         break;
 
       case 'field.field.node.config_mapping_test.comment_config_mapping_test':
-        $this->enableModules(['user', 'field', 'node', 'comment', 'taxonomy', 'config_mapping_test']);
-        $this->installEntitySchema('user');
-        $this->installEntitySchema('node');
+        $this->enableModules(['field', 'node', 'comment', 'taxonomy', 'config_mapping_test']);
         $this->assertNull(FieldConfig::load('node.config_mapping_test.comment_config_mapping_test'));
         // \Drupal\node\Entity\NodeType::$preview_mode uses DRUPAL_OPTIONAL,
         // which is defined in system.module.

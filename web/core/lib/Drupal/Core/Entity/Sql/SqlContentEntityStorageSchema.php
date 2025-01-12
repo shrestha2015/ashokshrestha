@@ -131,7 +131,6 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
    * Gets the keyvalue collection for tracking the installed schema.
    *
    * @return \Drupal\Core\KeyValueStore\KeyValueStoreInterface
-   *   The key-value collection storage.
    *
    * @todo Inject this dependency in the constructor once this class can be
    *   instantiated as a regular entity handler:
@@ -1437,7 +1436,7 @@ class SqlContentEntityStorageSchema implements DynamicallyFieldableEntityStorage
   /**
    * Adds defaults to a table schema definition.
    *
-   * @param array $schema
+   * @param $schema
    *   The schema definition array for a single table, passed by reference.
    */
   protected function addTableDefaults(&$schema) {

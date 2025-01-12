@@ -106,7 +106,7 @@ class CommentTokensHooks {
    * Implements hook_tokens().
    */
   #[Hook('tokens')]
-  public function tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata): array {
+  public function tokens($type, $tokens, array $data, array $options, BubbleableMetadata $bubbleable_metadata) {
     $token_service = \Drupal::token();
     $url_options = ['absolute' => TRUE];
     if (isset($options['langcode'])) {

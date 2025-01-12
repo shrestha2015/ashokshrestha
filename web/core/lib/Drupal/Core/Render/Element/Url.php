@@ -35,21 +35,22 @@ class Url extends FormElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#input' => TRUE,
       '#size' => 60,
       '#maxlength' => 255,
       '#autocomplete_route_name' => FALSE,
       '#process' => [
-        [static::class, 'processAutocomplete'],
-        [static::class, 'processAjaxForm'],
-        [static::class, 'processPattern'],
+        [$class, 'processAutocomplete'],
+        [$class, 'processAjaxForm'],
+        [$class, 'processPattern'],
       ],
       '#element_validate' => [
-        [static::class, 'validateUrl'],
+        [$class, 'validateUrl'],
       ],
       '#pre_render' => [
-        [static::class, 'preRenderUrl'],
+        [$class, 'preRenderUrl'],
       ],
       '#theme' => 'input__url',
       '#theme_wrappers' => ['form_element'],

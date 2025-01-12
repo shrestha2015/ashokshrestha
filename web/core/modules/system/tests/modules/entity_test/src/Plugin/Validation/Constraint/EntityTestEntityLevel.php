@@ -18,11 +18,6 @@ use Symfony\Component\Validator\Constraint as SymfonyConstraint;
 )]
 class EntityTestEntityLevel extends SymfonyConstraint {
 
-  /**
-   * The error message.
-   *
-   * @var string
-   */
   public $message = 'Entity level validation';
 
 }

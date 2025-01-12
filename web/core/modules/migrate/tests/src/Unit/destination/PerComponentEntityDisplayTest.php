@@ -49,15 +49,7 @@ class PerComponentEntityDisplayTest extends MigrateTestCase {
 
 class TestPerComponentEntityDisplay extends ComponentEntityDisplayBase {
   const MODE_NAME = 'view_mode';
-
-  /**
-   * The arguments of getEntity.
-   */
   protected $testValues;
-
-  /**
-   * The test entity.
-   */
   protected $entity;
 
   public function __construct($entity) {

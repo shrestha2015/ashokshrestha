@@ -25,7 +25,6 @@ class InstallerNonDefaultDatabaseDriverTest extends InstallerTestBase {
 
   /**
    * The name of the test database driver in use.
-   *
    * @var string
    */
   protected $testDriverName;

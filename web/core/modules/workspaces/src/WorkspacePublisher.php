@@ -12,8 +12,6 @@ use Drupal\workspaces\Event\WorkspacePrePublishEvent;
 use Psr\Log\LoggerInterface;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
-// cspell:ignore differring
-
 /**
  * Default implementation of the workspace publisher.
  *
@@ -71,7 +69,7 @@ class WorkspacePublisher implements WorkspacePublisherInterface {
             $field_name = $entity->getEntityType()->getRevisionMetadataKey('workspace');
             $entity->{$field_name}->target_id = NULL;
 
-            $entity->setOriginal($default_revisions[$entity->id()]);
+            $entity->original = $default_revisions[$entity->id()];
             $entity->save();
             $counter++;
 

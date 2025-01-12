@@ -21,9 +21,6 @@ abstract class ModuleTestBase extends BrowserTestBase {
    */
   protected static $modules = ['system_test'];
 
-  /**
-   * The test user.
-   */
   protected $adminUser;
 
   /**

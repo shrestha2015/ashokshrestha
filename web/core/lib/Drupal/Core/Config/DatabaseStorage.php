@@ -153,7 +153,6 @@ class DatabaseStorage implements StorageInterface {
    *   The config data, already dumped to a string.
    *
    * @return bool
-   *   TRUE when the write was successful, FALSE otherwise.
    */
   protected function doWrite($name, $data) {
     return (bool) $this->connection->merge($this->table, $this->options)

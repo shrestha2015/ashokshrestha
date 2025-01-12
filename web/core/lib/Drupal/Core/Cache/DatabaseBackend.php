@@ -458,7 +458,7 @@ class DatabaseBackend implements CacheBackendInterface {
    * yet the query failed, then the cache is stale and the exception needs to
    * propagate.
    *
-   * @param \Exception $e
+   * @param $e
    *   The exception.
    * @param string|null $table_name
    *   The table name. Defaults to $this->bin.
@@ -566,10 +566,9 @@ class DatabaseBackend implements CacheBackendInterface {
   }
 
   /**
-   * Gets the maximum number of rows for this cache bin table.
+   * The maximum number of rows that this cache bin table is allowed to store.
    *
    * @return int
-   *   The maximum number of rows that this cache bin table is allowed to store.
    */
   public function getMaxRows() {
     return $this->maxRows;

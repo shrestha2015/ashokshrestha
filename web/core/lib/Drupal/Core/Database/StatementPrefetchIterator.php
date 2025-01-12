@@ -167,7 +167,7 @@ class StatementPrefetchIterator implements \Iterator, StatementInterface {
    * Some drivers (including SQLite) will need to perform some preparation
    * themselves to get the statement right.
    *
-   * @param string $query
+   * @param $query
    *   The query.
    * @param array|null $args
    *   An array of arguments. This can be NULL.
@@ -260,7 +260,7 @@ class StatementPrefetchIterator implements \Iterator, StatementInterface {
    */
   public function fetchColumn($index = 0) {
     if ($row = $this->fetch(\PDO::FETCH_ASSOC)) {
-      return $this->assocToColumn($row, $this->columnNames, $index);
+      return $row[$this->columnNames[$index]];
     }
     return FALSE;
   }

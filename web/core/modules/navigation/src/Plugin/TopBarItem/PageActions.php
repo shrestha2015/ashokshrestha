@@ -40,15 +40,11 @@ final class PageActions extends TopBarItemBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function build(): array {
-    $build = [
-      '#cache' => [
-        'contexts' => ['route'],
-      ],
-    ];
+    $build = [];
     // Local tasks for content entities.
     if ($this->navigationRenderer->hasLocalTasks()) {
       $local_tasks = $this->navigationRenderer->getLocalTasks();
-      $build += [
+      $build = [
         '#theme' => 'top_bar_local_tasks',
         '#local_tasks' => $local_tasks['tasks'],
       ];

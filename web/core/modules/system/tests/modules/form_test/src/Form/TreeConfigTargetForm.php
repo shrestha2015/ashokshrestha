@@ -32,17 +32,17 @@ class TreeConfigTargetForm extends ConfigFormBase {
       '#open' => TRUE,
       '#tree' => TRUE,
       '#input' => TRUE,
-      '#title' => $this->t('Vegetable preferences'),
+      '#title' => t('Vegetable preferences'),
     ];
     $form['vegetables']['favorite'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Favorite'),
+      '#title' => t('Favorite'),
       '#default_value' => 'Potato',
       '#config_target' => 'form_test.object:favorite_vegetable',
     ];
     $form['vegetables']['nemesis'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Nemesis'),
+      '#title' => t('Nemesis'),
       '#config_target' => 'form_test.object:nemesis_vegetable',
     ];
     // Since form_test.object contains translatable values, it must specify a

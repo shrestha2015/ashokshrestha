@@ -31,7 +31,6 @@ class ConfigActionsTest extends KernelTestBase {
     /** @var \Drupal\Core\Config\Action\ConfigActionManager $manager */
     $manager = $this->container->get('plugin.manager.config_action');
 
-    $this->installEntitySchema('entity_test_with_bundle');
     EntityTestBundle::create(['id' => 'test'])->save();
 
     /** @var \Drupal\Core\Entity\EntityDisplayRepositoryInterface $display_repository */

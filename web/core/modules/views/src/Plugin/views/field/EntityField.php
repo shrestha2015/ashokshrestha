@@ -714,9 +714,6 @@ class EntityField extends FieldPluginBase implements CacheableDependencyInterfac
     ];
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function submitGroupByForm(&$form, FormStateInterface $form_state) {
     parent::submitGroupByForm($form, $form_state);
     $item = &$form_state->get('handler')->options;
@@ -969,16 +966,10 @@ class EntityField extends FieldPluginBase implements CacheableDependencyInterfac
     return $processed_entity;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function render_item($count, $item) {
     return $this->renderer->render($item['rendered']);
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function documentSelfTokens(&$tokens) {
     $field = $this->getFieldDefinition();
     foreach ($field->getColumns() as $id => $column) {
@@ -986,9 +977,6 @@ class EntityField extends FieldPluginBase implements CacheableDependencyInterfac
     }
   }
 
-  /**
-   * {@inheritdoc}
-   */
   protected function addSelfTokens(&$tokens, $item) {
     $field = $this->getFieldDefinition();
     foreach ($field->getColumns() as $id => $column) {

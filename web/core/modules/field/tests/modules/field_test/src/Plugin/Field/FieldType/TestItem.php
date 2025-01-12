@@ -10,7 +10,6 @@ use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\TypedData\DataDefinition;
-use Drupal\field_test\FieldTestHelper;
 
 /**
  * Defines the 'test_field' entity field item.
@@ -115,7 +114,7 @@ class TestItem extends FieldItemBase {
    */
   public function delete() {
     // Reports that delete() method is executed for testing purposes.
-    FieldTestHelper::memorize('field_test_field_delete', [$this->getEntity()]);
+    field_test_memorize('field_test_field_delete', [$this->getEntity()]);
   }
 
   /**

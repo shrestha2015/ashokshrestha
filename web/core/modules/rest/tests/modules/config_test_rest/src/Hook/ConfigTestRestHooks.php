@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\config_test_rest\Hook;
 
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Access\AccessResultReasonInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
@@ -31,7 +30,7 @@ class ConfigTestRestHooks {
    * Implements hook_ENTITY_TYPE_access().
    */
   #[Hook('config_test_access')]
-  public function configTestAccess(EntityInterface $entity, $operation, AccountInterface $account): AccessResultInterface {
+  public function configTestAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     // Add permission, so that EntityResourceTestBase's scenarios can test access
     // being denied. By default, all access is always allowed for the config_test
     // config entity.

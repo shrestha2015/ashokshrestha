@@ -36,17 +36,18 @@ class Number extends FormElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#input' => TRUE,
       '#step' => 1,
       '#process' => [
-        [static::class, 'processAjaxForm'],
+        [$class, 'processAjaxForm'],
       ],
       '#element_validate' => [
-        [static::class, 'validateNumber'],
+        [$class, 'validateNumber'],
       ],
       '#pre_render' => [
-        [static::class, 'preRenderNumber'],
+        [$class, 'preRenderNumber'],
       ],
       '#theme' => 'input__number',
       '#theme_wrappers' => ['form_element'],

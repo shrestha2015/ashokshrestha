@@ -90,7 +90,6 @@ interface TableMappingInterface {
    * Gets the list of columns that can not be used as field type columns.
    *
    * @return array
-   *   A list of column names prohibited from being used as a field type column.
    */
   public function getReservedColumns();
 

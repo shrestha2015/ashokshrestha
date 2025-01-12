@@ -18,19 +18,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class LanguageNegotiationUrlTest extends UnitTestCase {
 
-  /**
-   * The language manager.
-   */
   protected $languageManager;
-
-  /**
-   * The test user.
-   */
   protected $user;
-
-  /**
-   * An array of languages.
-   */
   protected array $languages;
 
   /**

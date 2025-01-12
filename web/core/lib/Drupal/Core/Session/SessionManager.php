@@ -249,7 +249,6 @@ class SessionManager extends NativeSessionStorage implements SessionManagerInter
    * Command line clients do not support cookies nor sessions.
    *
    * @return bool
-   *   TRUE if the current PHP process runs on CLI, otherwise FALSE>
    */
   protected function isCli() {
     return PHP_SAPI === 'cli';

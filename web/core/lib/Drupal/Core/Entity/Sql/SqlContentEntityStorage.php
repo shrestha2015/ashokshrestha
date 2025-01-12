@@ -1084,9 +1084,9 @@ class SqlContentEntityStorage extends ContentEntityStorageBase implements SqlEnt
   /**
    * Checks whether a field column should be treated as serial.
    *
-   * @param string $table_name
+   * @param $table_name
    *   The name of the table the field column belongs to.
-   * @param string $schema_name
+   * @param $schema_name
    *   The schema name of the field column.
    *
    * @return bool
@@ -1296,7 +1296,12 @@ class SqlContentEntityStorage extends ContentEntityStorageBase implements SqlEnt
       $vid = $id;
     }
 
-    $original = $entity->getOriginal();
+    $original = !empty($entity->original) ? $entity->original : NULL;
+
+    // Use the loaded revision instead of default one to check for data change.
+    if ($original && !$entity->isNewRevision() && !$entity->isDefaultRevision()) {
+      $original = $this->loadRevision($entity->getLoadedRevisionId());
+    }
 
     // Determine which fields should be actually stored.
     $definitions = $this->entityFieldManager->getFieldDefinitions($entity_type, $bundle);

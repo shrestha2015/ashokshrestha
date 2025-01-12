@@ -116,7 +116,6 @@ abstract class FormBase implements FormInterface, ContainerInjectionInterface {
    * when the config factory needs to be manipulated directly.
    *
    * @return \Drupal\Core\Config\ConfigFactoryInterface
-   *   The configuration factory for this form.
    */
   protected function configFactory() {
     if (!$this->configFactory) {
@@ -162,7 +161,6 @@ abstract class FormBase implements FormInterface, ContainerInjectionInterface {
    * Gets the route match.
    *
    * @return \Drupal\Core\Routing\RouteMatchInterface
-   *   The currently active route match object.
    */
   protected function getRouteMatch() {
     if (!$this->routeMatch) {

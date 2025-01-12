@@ -348,9 +348,9 @@ abstract class PluginBase extends ComponentPluginBase implements ContainerFactor
    *
    * The resulting string will be sanitized with Xss::filterAdmin.
    *
-   * @param string $text
+   * @param $text
    *   Unsanitized string with possible tokens.
-   * @param array $tokens
+   * @param $tokens
    *   Array of token => replacement_value items.
    *
    * @return string
@@ -581,7 +581,6 @@ abstract class PluginBase extends ComponentPluginBase implements ContainerFactor
       // translate it again.
       // @see Drupal\Core\Language::filterLanguages().
       if (!$name instanceof TranslatableMarkup) {
-        // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
         $name = $this->t($name);
       }
       $list[PluginBase::VIEWS_QUERY_LANGUAGE_SITE_DEFAULT] = $name;

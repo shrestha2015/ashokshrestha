@@ -262,7 +262,6 @@ class ThemeInitialization implements ThemeInitializationInterface {
    * Gets all extensions.
    *
    * @return array
-   *   An associative array whose keys are the names of the extensions.
    */
   protected function getExtensions() {
     if (!isset($this->extensions)) {

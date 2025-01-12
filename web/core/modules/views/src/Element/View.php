@@ -17,9 +17,10 @@ class View extends RenderElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#pre_render' => [
-        [static::class, 'preRenderViewElement'],
+        [$class, 'preRenderViewElement'],
       ],
       '#name' => NULL,
       '#display_id' => 'default',

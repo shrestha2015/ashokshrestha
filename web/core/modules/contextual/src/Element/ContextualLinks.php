@@ -18,9 +18,10 @@ class ContextualLinks extends RenderElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#pre_render' => [
-        [static::class, 'preRenderLinks'],
+        [$class, 'preRenderLinks'],
       ],
       '#theme' => 'links__contextual',
       '#links' => [],

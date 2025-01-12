@@ -268,7 +268,7 @@ class CommentHooks {
    * @see \Drupal\comment\Plugin\Field\FieldType\CommentItem::propertyDefinitions()
    */
   #[Hook('entity_storage_load')]
-  public function entityStorageLoad($entities, $entity_type): void {
+  public function entityStorageLoad($entities, $entity_type) {
     // Comments can only be attached to content entities, so skip others.
     if (!\Drupal::entityTypeManager()->getDefinition($entity_type)->entityClassImplements(FieldableEntityInterface::class)) {
       return;
@@ -395,7 +395,7 @@ class CommentHooks {
    * results.
    */
   #[Hook('node_search_result')]
-  public function nodeSearchResult(EntityInterface $node): array {
+  public function nodeSearchResult(EntityInterface $node) {
     $comment_fields = \Drupal::service('comment.manager')->getFields('node');
     $comments = 0;
     $open = FALSE;
@@ -421,14 +421,13 @@ class CommentHooks {
         'comment' => \Drupal::translation()->formatPlural($comments, '1 comment', '@count comments'),
       ];
     }
-    return [];
   }
 
   /**
    * Implements hook_user_cancel().
    */
   #[Hook('user_cancel')]
-  public function userCancel($edit, UserInterface $account, $method): void {
+  public function userCancel($edit, UserInterface $account, $method) {
     switch ($method) {
       case 'user_cancel_block_unpublish':
         $comments = \Drupal::entityTypeManager()->getStorage('comment')->loadByProperties(['uid' => $account->id()]);
@@ -443,9 +442,9 @@ class CommentHooks {
         $comments = \Drupal::entityTypeManager()->getStorage('comment')->loadByProperties(['uid' => $account->id()]);
         foreach ($comments as $comment) {
           $langcodes = array_keys($comment->getTranslationLanguages());
-          // For efficiency manually set the original comment before applying
-          // any changes.
-          $comment->setOriginal(clone $comment);
+          // For efficiency manually save the original comment before applying any
+          // changes.
+          $comment->original = clone $comment;
           foreach ($langcodes as $langcode) {
             $comment_translated = $comment->getTranslation($langcode);
             $comment_translated->setOwnerId(0);
@@ -474,7 +473,7 @@ class CommentHooks {
    * Implements hook_ranking().
    */
   #[Hook('ranking')]
-  public function ranking(): array {
+  public function ranking() {
     return \Drupal::service('comment.statistics')->getRankingInfo();
   }
 

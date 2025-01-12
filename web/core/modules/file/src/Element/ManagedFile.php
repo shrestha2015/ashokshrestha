@@ -28,16 +28,17 @@ class ManagedFile extends FormElementBase {
    * {@inheritdoc}
    */
   public function getInfo() {
+    $class = static::class;
     return [
       '#input' => TRUE,
       '#process' => [
-        [static::class, 'processManagedFile'],
+        [$class, 'processManagedFile'],
       ],
       '#element_validate' => [
-        [static::class, 'validateManagedFile'],
+        [$class, 'validateManagedFile'],
       ],
       '#pre_render' => [
-        [static::class, 'preRenderManagedFile'],
+        [$class, 'preRenderManagedFile'],
       ],
       '#theme' => 'file_managed_file',
       '#theme_wrappers' => ['form_element'],

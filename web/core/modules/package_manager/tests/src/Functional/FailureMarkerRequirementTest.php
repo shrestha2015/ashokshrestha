@@ -51,7 +51,6 @@ class FailureMarkerRequirementTest extends PackageManagerTestBase {
       /**
        * {@inheritdoc}
        */
-      // phpcs:ignore DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable
       protected string $type = 'test';
     };
     $failure_marker->write($stage, $message);

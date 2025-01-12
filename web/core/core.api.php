@@ -2078,7 +2078,7 @@ function hook_condition_info_alter(array &$definitions) {
  * this hook. All core modules use MailManagerInterface->mail() for messaging,
  * it is best practice but not mandatory in contributed modules.
  *
- * @param array $message
+ * @param $message
  *   An array containing the message data. Keys in this array include:
  *   - 'id':
  *     The MailManagerInterface->mail() id of the message. Look at module source
@@ -2130,9 +2130,9 @@ function hook_mail_alter(&$message) {
  * unlike hook_mail_alter(), is only called on the $module argument to
  * MailManagerInterface->mail(), not all modules.
  *
- * @param string $key
+ * @param $key
  *   An identifier of the mail.
- * @param array $message
+ * @param $message
  *   An array to be filled in. Elements in this array include:
  *   - id: An ID to identify the mail sent. Look at module source code or
  *     MailManagerInterface->mail() for possible id values.
@@ -2153,13 +2153,13 @@ function hook_mail_alter(&$message) {
  *   - headers: Associative array containing mail headers, such as From,
  *     Sender, MIME-Version, Content-Type, etc.
  *     MailManagerInterface->mail() pre-fills several headers in this array.
- * @param array $params
+ * @param $params
  *   An array of parameters supplied by the caller of
  *   MailManagerInterface->mail().
  *
  * @see \Drupal\Core\Mail\MailManagerInterface::mail()
  */
-function hook_mail($key, &$message, $params): void {
+function hook_mail($key, &$message, $params) {
   $account = $params['account'];
   $context = $params['context'];
   $variables = [
@@ -2214,7 +2214,7 @@ function hook_mail_backend_info_alter(&$info) {
 /**
  * Alter the default country list.
  *
- * @param string[][] $countries
+ * @param $countries
  *   The associative array of countries keyed by two-letter country code.
  *
  * @see \Drupal\Core\Locale\CountryManager::getList()
@@ -2268,7 +2268,7 @@ function hook_layout_alter(&$definitions) {
  * @see drupal_flush_all_caches()
  * @see hook_rebuild()
  */
-function hook_cache_flush(): void {
+function hook_cache_flush() {
   if (defined('MAINTENANCE_MODE') && MAINTENANCE_MODE == 'update') {
     _update_cache_clear();
   }
@@ -2289,7 +2289,7 @@ function hook_cache_flush(): void {
  * @see hook_cache_flush()
  * @see drupal_flush_all_caches()
  */
-function hook_rebuild(): void {
+function hook_rebuild() {
   $themes = \Drupal::service('theme_handler')->listInfo();
   foreach ($themes as $theme) {
     _block_rehash($theme->getName());
@@ -2339,7 +2339,7 @@ function hook_config_import_steps_alter(&$sync_steps, \Drupal\Core\Config\Config
  *
  * For adding new data types use configuration schema YAML files instead.
  *
- * @param array $definitions
+ * @param $definitions
  *   Associative array of configuration type definitions keyed by schema type
  *   names. The elements are themselves array with information about the type.
  *

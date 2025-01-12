@@ -8,8 +8,6 @@ use Drupal\Core\Database\Database;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\filter\Entity\FilterFormat;
 
-// cspell:ignore drupalmediaediting
-
 /**
  * @coversDefaultClass \Drupal\ckeditor5\Plugin\CKEditor5Plugin\Media
  * @group ckeditor5

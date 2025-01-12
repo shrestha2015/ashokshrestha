@@ -428,7 +428,7 @@ abstract class StylePluginBase extends PluginBase {
   /**
    * Allow the style to do stuff before each row is rendered.
    *
-   * @param array $result
+   * @param $result
    *   The full array of results from the query.
    */
   public function preRender($result) {
@@ -474,7 +474,7 @@ abstract class StylePluginBase extends PluginBase {
    * Plugins may override this method if they wish some other way of handling
    * grouping.
    *
-   * @param array $sets
+   * @param $sets
    *   An array keyed by group content containing the grouping sets to render.
    *   Each set contains the following associative array:
    *   - group: The group content.
@@ -523,12 +523,12 @@ abstract class StylePluginBase extends PluginBase {
   /**
    * Group records as needed for rendering.
    *
-   * @param array $records
+   * @param $records
    *   An array of records from the view to group.
-   * @param array $groupings
+   * @param $groupings
    *   An array of grouping instructions on which fields to group. If empty, the
    *   result set will be given a single group with an empty string as a label.
-   * @param bool $group_rendered
+   * @param $group_rendered
    *   Boolean value whether to use the rendered or the raw field value for
    *   grouping. If set to NULL the return is structured as before
    *   Views 7.x-3.0-rc2. After Views 7.x-3.0 this boolean is only used if
@@ -795,9 +795,9 @@ abstract class StylePluginBase extends PluginBase {
   /**
    * Get the raw field value.
    *
-   * @param int $index
+   * @param $index
    *   The index count of the row.
-   * @param string $field
+   * @param $field
    *   The id of the field.
    */
   public function getFieldValue($index, $field) {

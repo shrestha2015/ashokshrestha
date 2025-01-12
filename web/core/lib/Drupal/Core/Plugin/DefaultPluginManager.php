@@ -378,7 +378,7 @@ class DefaultPluginManager extends PluginManagerBase implements PluginManagerInt
   /**
    * Invokes the hook to alter the definitions if the alter hook is set.
    *
-   * @param array $definitions
+   * @param $definitions
    *   The discovered plugin definitions.
    */
   protected function alterDefinitions(&$definitions) {

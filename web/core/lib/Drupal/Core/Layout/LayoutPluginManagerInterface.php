@@ -25,7 +25,6 @@ interface LayoutPluginManagerInterface extends CategorizingPluginManagerInterfac
    *
    * @return \Drupal\Core\Layout\LayoutInterface
    */
-  // phpcs:ignore Drupal.Commenting.FunctionComment.MissingReturnComment
   public function createInstance($plugin_id, array $configuration = []);
 
   /**
@@ -33,7 +32,6 @@ interface LayoutPluginManagerInterface extends CategorizingPluginManagerInterfac
    *
    * @return \Drupal\Core\Layout\LayoutDefinition|null
    */
-  // phpcs:ignore Drupal.Commenting.FunctionComment.MissingReturnComment
   public function getDefinition($plugin_id, $exception_on_invalid = TRUE);
 
   /**
@@ -41,7 +39,6 @@ interface LayoutPluginManagerInterface extends CategorizingPluginManagerInterfac
    *
    * @return \Drupal\Core\Layout\LayoutDefinition[]
    */
-  // phpcs:ignore Drupal.Commenting.FunctionComment.MissingReturnComment
   public function getDefinitions();
 
   /**
@@ -49,7 +46,6 @@ interface LayoutPluginManagerInterface extends CategorizingPluginManagerInterfac
    *
    * @return \Drupal\Core\Layout\LayoutDefinition[]
    */
-  // phpcs:ignore Drupal.Commenting.FunctionComment.MissingReturnComment
   public function getSortedDefinitions(?array $definitions = NULL);
 
   /**
@@ -57,7 +53,6 @@ interface LayoutPluginManagerInterface extends CategorizingPluginManagerInterfac
    *
    * @return \Drupal\Core\Layout\LayoutDefinition[][]
    */
-  // phpcs:ignore Drupal.Commenting.FunctionComment.MissingReturnComment
   public function getGroupedDefinitions(?array $definitions = NULL);
 
   /**

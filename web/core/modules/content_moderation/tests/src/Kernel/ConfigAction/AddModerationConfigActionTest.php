@@ -41,7 +41,6 @@ class AddModerationConfigActionTest extends KernelTestBase {
   ];
 
   public function testAddEntityTypeAndBundle(): void {
-    $this->installEntitySchema('node');
     $this->installConfig('node');
 
     $this->createContentType(['type' => 'a']);

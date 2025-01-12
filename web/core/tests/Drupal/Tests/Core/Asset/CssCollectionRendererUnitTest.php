@@ -7,6 +7,7 @@ namespace Drupal\Tests\Core\Asset;
 use Drupal\Core\Asset\AssetQueryStringInterface;
 use Drupal\Core\Asset\CssCollectionRenderer;
 use Drupal\Core\File\FileUrlGeneratorInterface;
+use Drupal\Core\State\StateInterface;
 use Drupal\Tests\UnitTestCase;
 
 /**
@@ -35,6 +36,7 @@ class CssCollectionRendererUnitTest extends UnitTestCase {
    */
   protected function setUp(): void {
     parent::setUp();
+    $state = $this->prophesize(StateInterface::class);
     $assetQueryString = $this->prophesize(AssetQueryStringInterface::class);
     $file_url_generator = $this->createMock(FileUrlGeneratorInterface::class);
     $file_url_generator->expects($this->any())

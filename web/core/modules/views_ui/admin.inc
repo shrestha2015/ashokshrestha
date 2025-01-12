@@ -24,20 +24,20 @@ use Drupal\Core\Url;
  * mean that the non-JavaScript fallback button does not appear in the correct
  * place in the form.
  *
- * @param array $wrapping_element
+ * @param $wrapping_element
  *   The element whose child will server as the AJAX trigger. For example, if
  *   $form['some_wrapper']['triggering_element'] represents the element which
  *   will trigger the AJAX behavior, you would pass $form['some_wrapper'] for
  *   this parameter.
- * @param string $trigger_key
+ * @param $trigger_key
  *   The key within the wrapping element that identifies which of its children
  *   serves as the AJAX trigger. In the above example, you would pass
  *   'triggering_element' for this parameter.
- * @param array $refresh_parents
+ * @param $refresh_parents
  *   An array of parent keys that point to the part of the form that will be
  *   refreshed by AJAX. For example, if triggering the AJAX behavior should
  *   cause $form['dynamic_content']['section'] to be refreshed, you would pass
- *   ['dynamic_content', 'section'] for this parameter.
+ *   array('dynamic_content', 'section') for this parameter.
  */
 function views_ui_add_ajax_trigger(&$wrapping_element, $trigger_key, $refresh_parents) {
   $seen_ids = &drupal_static(__FUNCTION__ . ':seen_ids', []);

@@ -145,15 +145,15 @@ function _update_fix_missing_schema() {
  * and set the #finished property to the percentage completed that it is, as a
  * fraction of 1.
  *
- * @param string $module
+ * @param $module
  *   The module whose update will be run.
- * @param string $number
+ * @param $number
  *   The update number to run.
- * @param array $dependency_map
+ * @param $dependency_map
  *   An array whose keys are the names of all update functions that will be
  *   performed during this batch process, and whose values are arrays of other
  *   update functions that each one depends on.
- * @param array $context
+ * @param $context
  *   The batch context array.
  *
  * @see update_resolve_dependencies()
@@ -188,7 +188,6 @@ function update_do_one($module, $number, $dependency_map, &$context) {
       \Drupal::logger('update')->error(Error::DEFAULT_ERROR_MESSAGE, $variables);
 
       unset($variables['backtrace'], $variables['exception'], $variables['severity_level']);
-      // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
       $ret['#abort'] = ['success' => FALSE, 'query' => t(Error::DEFAULT_ERROR_MESSAGE, $variables)];
     }
   }
@@ -259,7 +258,6 @@ function update_invoke_post_update($function, &$context) {
       unset($variables['backtrace'], $variables['exception'], $variables['severity_level']);
       $ret['#abort'] = [
         'success' => FALSE,
-        // phpcs:ignore Drupal.Semantics.FunctionT.NotLiteralString
         'query' => t(Error::DEFAULT_ERROR_MESSAGE, $variables),
       ];
     }
@@ -398,7 +396,7 @@ function update_get_update_list() {
  * dependency chain for each update, as provided by the depth-first search
  * algorithm in Drupal\Component\Graph\Graph::searchAndSort().
  *
- * @param array $starting_updates
+ * @param $starting_updates
  *   An array whose keys contain the names of modules with updates to be run
  *   and whose values contain the number of the first requested update for that
  *   module.
@@ -465,7 +463,7 @@ function update_resolve_dependencies($starting_updates) {
 /**
  * Returns an organized list of update functions for a set of modules.
  *
- * @param array $starting_updates
+ * @param $starting_updates
  *   An array whose keys contain the names of modules and whose values contain
  *   the number of the first requested update for that module.
  *
@@ -523,7 +521,7 @@ function update_get_update_function_list($starting_updates) {
  * modules which implement hook_update_dependencies(), and builds them into the
  * graph as well.
  *
- * @param array $update_functions
+ * @param $update_functions
  *   An organized array of update functions, in the format returned by
  *   update_get_update_function_list().
  *
@@ -586,11 +584,11 @@ function update_build_dependency_graph($update_functions) {
 /**
  * Determines if a module update is missing or unavailable.
  *
- * @param string $module
+ * @param $module
  *   The name of the module.
- * @param int $number
+ * @param $number
  *   The number of the update within that module.
- * @param array $update_functions
+ * @param $update_functions
  *   An organized array of update functions, in the format returned by
  *   update_get_update_function_list(). This should represent all module
  *   updates that are requested to run at the time this function is called.
@@ -606,9 +604,9 @@ function update_is_missing($module, $number, $update_functions) {
 /**
  * Determines if a module update has already been performed.
  *
- * @param string $module
+ * @param $module
  *   The name of the module.
- * @param int $number
+ * @param $number
  *   The number of the update within that module.
  *
  * @return bool

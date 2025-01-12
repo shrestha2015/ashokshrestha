@@ -2,7 +2,6 @@
 
 namespace Drupal\content_moderation\Hook;
 
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\views\Plugin\views\filter\Broken;
 use Drupal\views\ViewExecutable;
 use Drupal\views\Views;
@@ -206,10 +205,10 @@ class ContentModerationHooks {
    * that wants to moderate things.
    */
   #[Hook('entity_access')]
-  public function entityAccess(EntityInterface $entity, $operation, AccountInterface $account): AccessResultInterface {
+  public function entityAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     /** @var \Drupal\content_moderation\ModerationInformationInterface $moderation_info */
     $moderation_info = \Drupal::service('content_moderation.moderation_information');
-    $access_result = AccessResult::neutral();
+    $access_result = NULL;
     if ($operation === 'view') {
       $access_result = $entity instanceof EntityPublishedInterface && !$entity->isPublished() ? AccessResult::allowedIfHasPermission($account, 'view any unpublished content') : AccessResult::neutral();
       $access_result->addCacheableDependency($entity);
@@ -241,7 +240,7 @@ class ContentModerationHooks {
    * Implements hook_entity_field_access().
    */
   #[Hook('entity_field_access')]
-  public function entityFieldAccess($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL): AccessResultInterface {
+  public function entityFieldAccess($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL) {
     if ($items && $operation === 'edit') {
       /** @var \Drupal\content_moderation\ModerationInformationInterface $moderation_info */
       $moderation_info = \Drupal::service('content_moderation.moderation_information');
@@ -361,7 +360,7 @@ class ContentModerationHooks {
    * Implements hook_views_post_execute().
    */
   #[Hook('views_post_execute')]
-  public function viewsPostExecute(ViewExecutable $view): void {
+  public function viewsPostExecute(ViewExecutable $view) {
     // @todo Remove this once broken handlers in views configuration result in
     //   a view no longer returning results. https://www.drupal.org/node/2907954.
     foreach ($view->filter as $id => $filter) {

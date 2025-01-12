@@ -64,7 +64,7 @@ trait RecipeInputFormTrait {
        *
        * @var array
        */
-      // phpcs:ignore DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable, Drupal.Commenting.VariableComment.Missing
+      // phpcs:ignore DrupalPractice.CodeAnalysis.VariableAnalysis.UnusedVariable
       public array $form = [];
 
       /**

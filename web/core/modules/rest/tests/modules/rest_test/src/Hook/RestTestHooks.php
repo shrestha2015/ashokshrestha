@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Drupal\rest_test\Hook;
 
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Access\AccessResult;
@@ -24,7 +23,7 @@ class RestTestHooks {
    * @see \Drupal\Tests\rest\Functional\EntityResource\EntityResourceTestBase::setUp()
    */
   #[Hook('entity_field_access')]
-  public function entityFieldAccess($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL): AccessResultInterface {
+  public function entityFieldAccess($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL) {
     // @see \Drupal\Tests\rest\Functional\EntityResource\EntityResourceTestBase::testPost()
     // @see \Drupal\Tests\rest\Functional\EntityResource\EntityResourceTestBase::testPatch()
     if ($field_definition->getName() === 'field_rest_test') {

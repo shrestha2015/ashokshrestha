@@ -20,8 +20,9 @@ class CoversHelper
 	/**
 	 * Reflection provider.
 	 *
+	 * @var ReflectionProvider
 	 */
-	private ReflectionProvider $reflectionProvider;
+	private $reflectionProvider;
 
 	public function __construct(ReflectionProvider $reflectionProvider)
 	{
@@ -47,12 +48,12 @@ class CoversHelper
 		foreach ($phpDocNodes as $docNode) {
 			$covers = array_merge(
 				$covers,
-				$docNode->getTagsByName('@covers'),
+				$docNode->getTagsByName('@covers')
 			);
 
 			$coversDefaultClasses = array_merge(
 				$coversDefaultClasses,
-				$docNode->getTagsByName('@coversDefaultClass'),
+				$docNode->getTagsByName('@coversDefaultClass')
 			);
 		}
 
@@ -99,14 +100,14 @@ class CoversHelper
 			if ($class->isInterface()) {
 				$errors[] = RuleErrorBuilder::message(sprintf(
 					'@covers value %s references an interface.',
-					$fullName,
+					$fullName
 				))->identifier('phpunit.coversInterface')->build();
 			}
 
 			if (isset($method) && $method !== '' && !$class->hasMethod($method)) {
 				$errors[] = RuleErrorBuilder::message(sprintf(
 					'@covers value %s references an invalid method.',
-					$fullName,
+					$fullName
 				))->identifier('phpunit.coversMethod')->build();
 			}
 		} elseif (isset($method) && $this->reflectionProvider->hasFunction(new Name($method, []), null)) {
@@ -117,7 +118,7 @@ class CoversHelper
 			$error = RuleErrorBuilder::message(sprintf(
 				'@covers value %s references an invalid %s.',
 				$fullName,
-				$isMethod ? 'method' : 'class or function',
+				$isMethod ? 'method' : 'class or function'
 			))->identifier(sprintf('phpunit.covers%s', $isMethod ? 'Method' : ''));
 
 			if (strpos($className, '\\') === false) {

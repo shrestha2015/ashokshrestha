@@ -35,9 +35,7 @@ final class DependencySerializationTraitPropertyRule implements Rule
                     '%s does not support private properties.',
                     DependencySerializationTrait::class
                 )
-            )->tip('See https://www.drupal.org/node/3110266')
-            ->identifier('dependencySerializationTraitProperty.unsupportedPrivateProperty')
-            ->build();
+            )->tip('See https://www.drupal.org/node/3110266')->build();
         }
         if ($node->isReadOnly()) {
             $errors[] = RuleErrorBuilder::message(
@@ -45,9 +43,7 @@ final class DependencySerializationTraitPropertyRule implements Rule
                     'Read-only properties are incompatible with %s.',
                     DependencySerializationTrait::class
                 )
-            )->tip('See https://www.drupal.org/node/3110266')
-            ->identifier('dependencySerializationTraitProperty.unsupportedReadOnlyProperty')
-            ->build();
+            )->tip('See https://www.drupal.org/node/3110266')->build();
         }
         return $errors;
     }

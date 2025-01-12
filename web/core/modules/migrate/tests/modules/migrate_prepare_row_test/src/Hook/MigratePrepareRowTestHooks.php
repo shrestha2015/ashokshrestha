@@ -19,7 +19,7 @@ class MigratePrepareRowTestHooks {
    * Implements hook_migrate_prepare_row().
    */
   #[Hook('migrate_prepare_row')]
-  public function migratePrepareRow(Row $row, MigrateSourceInterface $source, MigrationInterface $migration): void {
+  public function migratePrepareRow(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
     // Test both options for save_to_map.
     $data = $row->getSourceProperty('data');
     if ($data == 'skip_and_record') {

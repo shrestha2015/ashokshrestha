@@ -20,7 +20,6 @@ class NumericArgument extends ArgumentPluginBase {
 
   /**
    * The actual value which is used for querying.
-   *
    * @var array
    */
   public $value;
@@ -83,7 +82,6 @@ class NumericArgument extends ArgumentPluginBase {
 
   /**
    * Override for specific title lookups.
-   *
    * @return array
    *   Returns all titles, if it's just one title it's an array with one entry.
    */

@@ -11,15 +11,14 @@ use Drupal\Core\Theme\Icon\Plugin\IconPackManager;
 use Drupal\Core\Theme\Icon\Plugin\IconPackManagerInterface;
 
 /**
- * Tests values are from test module icon_test.
+ * @coversDefaultClass \Drupal\Core\Theme\Icon\Plugin\IconPackManager
  *
- * Any change of the definition will impact the tests.
+ * Tests values are from test module icon_test. Any change of the definition
+ * will impact the tests.
  *
  * @see core/modules/system/tests/modules/icon_test/icon_test.icons.yml
  *
  * @group icon
- *
- * @coversDefaultClass \Drupal\Core\Theme\Icon\Plugin\IconPackManager
  */
 class IconPackManagerKernelTest extends KernelTestBase {
 

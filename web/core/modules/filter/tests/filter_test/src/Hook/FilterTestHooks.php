@@ -31,7 +31,7 @@ class FilterTestHooks {
    * Implements hook_filter_format_disable().
    */
   #[Hook('filter_format_disable')]
-  public function filterFormatDisable($format): void {
+  public function filterFormatDisable($format) {
     \Drupal::messenger()->addStatus('hook_filter_format_disable invoked.');
   }
 

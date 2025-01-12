@@ -13,7 +13,6 @@ class CacheCollectorHelper extends CacheCollector {
 
   /**
    * Contains data to return on a cache miss.
-   *
    * @var array
    */
   protected $cacheMissData = [];

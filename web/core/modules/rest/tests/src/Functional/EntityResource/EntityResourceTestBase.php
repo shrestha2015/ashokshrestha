@@ -475,8 +475,7 @@ abstract class EntityResourceTestBase extends ResourceTestBase {
     $this->provisionEntityResource(TRUE);
     $expected_403_cacheability = $this->getExpectedUnauthorizedAccessCacheability()
       ->addCacheableDependency($this->getExpectedUnauthorizedEntityAccessCacheability(static::$auth !== FALSE));
-    // DX: 403 because unauthorized single-format route, ?_format can be
-    // omitted.
+    // DX: 403 because unauthorized single-format route, ?_format is omittable.
     $url->setOption('query', []);
     $response = $this->request('GET', $url, $request_options);
     if ($has_canonical_url) {
@@ -497,7 +496,7 @@ abstract class EntityResourceTestBase extends ResourceTestBase {
 
     // Then, what we'll use for the remainder of the test: multiple formats.
     $this->provisionEntityResource();
-    // DX: 406 because despite unauthorized, ?_format can not be omitted.
+    // DX: 406 because despite unauthorized, ?_format is not omittable.
     $url->setOption('query', []);
     $response = $this->request('GET', $url, $request_options);
     if ($has_canonical_url) {

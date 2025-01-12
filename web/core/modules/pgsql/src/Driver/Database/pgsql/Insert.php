@@ -17,9 +17,6 @@ use Drupal\Core\Database\Query\Insert as QueryInsert;
  */
 class Insert extends QueryInsert {
 
-  /**
-   * {@inheritdoc}
-   */
   public function execute() {
     if (!$this->preExecute()) {
       return NULL;
@@ -105,9 +102,6 @@ class Insert extends QueryInsert {
     return $last_insert_id ?? NULL;
   }
 
-  /**
-   * {@inheritdoc}
-   */
   public function __toString() {
     // Create a sanitized comment string to prepend to the query.
     $comments = $this->connection->makeComment($this->comments);

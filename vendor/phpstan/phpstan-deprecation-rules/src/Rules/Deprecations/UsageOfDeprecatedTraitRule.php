@@ -18,9 +18,11 @@ use function sprintf;
 class UsageOfDeprecatedTraitRule implements Rule
 {
 
-	private ReflectionProvider $reflectionProvider;
+	/** @var ReflectionProvider */
+	private $reflectionProvider;
 
-	private DeprecatedScopeHelper $deprecatedScopeHelper;
+	/** @var DeprecatedScopeHelper */
+	private $deprecatedScopeHelper;
 
 	public function __construct(ReflectionProvider $reflectionProvider, DeprecatedScopeHelper $deprecatedScopeHelper)
 	{
@@ -61,14 +63,14 @@ class UsageOfDeprecatedTraitRule implements Rule
 					$errors[] = RuleErrorBuilder::message(sprintf(
 						'Usage of deprecated trait %s in class %s.',
 						$traitName,
-						$className,
+						$className
 					))->identifier('traitUse.deprecated')->build();
 				} else {
 					$errors[] = RuleErrorBuilder::message(sprintf(
 						"Usage of deprecated trait %s in class %s:\n%s",
 						$traitName,
 						$className,
-						$description,
+						$description
 					))->identifier('traitUse.deprecated')->build();
 				}
 			} catch (ClassNotFoundException $e) {

@@ -28,11 +28,11 @@ class FormTestRedirectForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['redirection'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Use redirection'),
+      '#title' => t('Use redirection'),
     ];
     $form['destination'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Redirect destination'),
+      '#title' => t('Redirect destination'),
       '#states' => [
         'visible' => [
           ':input[name="redirection"]' => ['checked' => TRUE],
@@ -41,7 +41,7 @@ class FormTestRedirectForm extends FormBase {
     ];
     $form['ignore_destination'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Ignore destination query parameter'),
+      '#title' => t('Ignore destination query parameter'),
       '#states' => [
         'visible' => [
           ':input[name="redirection"]' => ['checked' => TRUE],
@@ -50,7 +50,7 @@ class FormTestRedirectForm extends FormBase {
     ];
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Submit'),
+      '#value' => t('Submit'),
     ];
 
     return $form;

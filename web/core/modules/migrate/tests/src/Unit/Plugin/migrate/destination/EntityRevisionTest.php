@@ -38,9 +38,9 @@ class EntityRevisionTest extends EntityTestBase {
   }
 
   /**
-   * Tests entities that do not support revisions.
+   * Tests that revision destination fails for unrevisionable entities.
    */
-  public function testNoRevisionSupport(): void {
+  public function testUnrevisionable(): void {
     $this->entityType->getKey('id')->willReturn('id');
     $this->entityType->getKey('revision')->willReturn('');
     $this->entityFieldManager->getBaseFieldDefinitions('foo')
@@ -100,9 +100,6 @@ class EntityRevisionTest extends EntityTestBase {
  */
 class EntityRevisionTestDestination extends EntityRevision {
 
-  /**
-   * The test entity.
-   */
   private $entity = NULL;
 
   public function setEntity($entity): void {
